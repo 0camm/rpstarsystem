@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RPL Star System</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: rgba(16, 22, 36, 0.85);
+      --panel-2: rgba(22, 30, 48, 0.95);
+      --text: #e8eefc;
+      --muted: #9aa7c2;
+      --accent: #6ea8ff;
+      --accent-2: #8c6eff;
+      --good: #32d583;
+      --warn: #fdb022;
+      --bad: #f04438;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110, 168, 255, 0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(140, 110, 255, 0.14), transparent 28%),
+        linear-gradient(180deg, #060810 0%, #0b0f17 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-main {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -120px -120px auto;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(110, 168, 255, 0.22), transparent 65%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(110, 168, 255, 0.12);
+      border: 1px solid rgba(110, 168, 255, 0.25);
+      color: #d8e7ff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .stat-box {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-note {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .control {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: var(--text);
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    .control::placeholder {
+      color: #7483a5;
+    }
+
+    select.control {
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.03em;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .player {
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(22, 30, 48, 0.96), rgba(16, 22, 36, 0.95));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .player:hover {
+      transform: translateY(-2px);
+      border-color: rgba(110, 168, 255, 0.28);
+    }
+
+    .player-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .name {
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .star {
+      width: 14px;
+      height: 14px;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 72%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      background: #3a4762;
+    }
+
+    .star.active {
+      background: linear-gradient(180deg, #ffd54a, #f7a928);
+      box-shadow: 0 0 12px rgba(247, 169, 40, 0.4);
+    }
+
+    .meta {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .meta-item span:first-child {
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      width: fit-content;
+      border: 1px solid transparent;
+    }
+
+    .tag.good {
+      background: rgba(50, 213, 131, 0.12);
+      color: #b6f4d0;
+      border-color: rgba(50, 213, 131, 0.2);
+    }
+
+    .tag.warn {
+      background: rgba(253, 176, 34, 0.12);
+      color: #ffe1a6;
+      border-color: rgba(253, 176, 34, 0.2);
+    }
+
+    .tag.bad {
+      background: rgba(240, 68, 56, 0.12);
+      color: #ffb5b0;
+      border-color: rgba(240, 68, 56, 0.2);
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .legend .tag {
+      cursor: default;
+    }
+
+    .empty {
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(16, 22, 36, 0.55);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 18px 12px 44px;
+      }
+
+      .hero-main {
+        padding: 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <section class="card hero-main">
+        <div class="badge">★ RPL Star System</div>
+        <h1>Player Star Ratings</h1>
+        <p class="subtitle">
+          This website lists every player’s star rating and shows whether they are eligible for each role.
+          Use the search bar and filters below to quickly check rankings and requirements.
+        </p>
+
+        <div class="legend">
+          <span class="tag good">Eligible</span>
+          <span class="tag warn">Borderline</span>
+          <span class="tag bad">Too high</span>
+        </div>
+      </section>
+
+      <aside class="hero-stats">
+        <div class="card stat-box">
+          <div class="stat-label">Total Players</div>
+          <div class="stat-value" id="totalPlayers">0</div>
+          <div class="stat-note">Players listed in the current system.</div>
+        </div>
+        <div class="card stat-box">
+          <div class="stat-label">Eligible Players</div>
+          <div class="stat-value" id="eligiblePlayers">0</div>
+          <div class="stat-note">Players who meet the selected role requirement.</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="controls">
+      <input id="search" class="control" type="text" placeholder="Search player name..." />
+      <select id="roleFilter" class="control">
+        <option value="all">All Roles</option>
+        <option value="owner">Franchise Owner</option>
+        <option value="coach">Coach</option>
+        <option value="starter">Starter</option>
+        <option value="bench">Bench</option>
+      </select>
+      <select id="starFilter" class="control">
+        <option value="all">All Star Ratings</option>
+        <option value="5">5 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="2">2 Stars</option>
+        <option value="1">1 Star</option>
+      </select>
+    </div>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Player List</h2>
+        <div class="small" id="resultCount">0 results</div>
+      </div>
+
+      <div id="playerGrid" class="grid"></div>
+      <div id="emptyState" class="empty" style="display:none;">
+        No players match your search.
+      </div>
+    </section>
+
+    <div class="footer">
+      Update the player list inside the JavaScript section to match your league.
+    </div>
+  </div>
+
+  <script>
+    const players = [
+      { name: "Darius Cole", stars: 5, role: "owner", team: "Lions", eligibleFor: 3 },
+      { name: "Mason Reed", stars: 4, role: "coach", team: "Knights", eligibleFor: 2 },
+      { name: "Jalen Frost", stars: 4, role: "starter", team: "Wolves", eligibleFor: 2 },
+      { name: "Kai Bennett", stars: 3, role: "starter", team: "Bulls", eligibleFor: 1 },
+      { name: "Troy Adams", stars: 3, role: "bench", team: "Sharks", eligibleFor: 1 },
+      { name: "Noah Price", stars: 2, role: "bench", team: "Hawks", eligibleFor: 1 },
+      { name: "Ethan King", stars: 5, role: "owner", team: "Heat", eligibleFor: 3 },
+      { name: "Zay Carter", stars: 2, role: "coach", team: "Storm", eligibleFor: 1 },
+      { name: "Micah Lane", stars: 1, role: "bench", team: "Rockets", eligibleFor: 1 }
+    ];
+
+    const roleNames = {
+      owner: "Franchise Owner",
+      coach: "Coach",
+      starter: "Starter",
+      bench: "Bench"
+    };
+
+    const grid = document.getElementById("playerGrid");
+    const emptyState = document.getElementById("emptyState");
+    const search = document.getElementById("search");
+    const roleFilter = document.getElementById("roleFilter");
+    const starFilter = document.getElementById("starFilter");
+    const totalPlayers = document.getElementById("totalPlayers");
+    const eligiblePlayers = document.getElementById("eligiblePlayers");
+    const resultCount = document.getElementById("resultCount");
+
+    function starsHtml(count) {
+      let html = "";
+      for (let i = 1; i <= 5; i++) {
+        html += `<span class="star ${i <= count ? "active" : ""}"></span>`;
+      }
+      return html;
+    }
+
+    function eligibleTag(player) {
+      // Simple rule: player is eligible for a role if their stars meet or exceed the required star level.
+      // The "2 stars above = too good" idea can be shown as the role eligibility threshold.
+      const requiredStars = player.eligibleFor;
+      if (player.stars >= requiredStars + 2) {
+        return `<span class="tag bad">Too high for role</span>`;
+      }
+      if (player.stars >= requiredStars) {
+        return `<span class="tag good">Eligible</span>`;
+      }
+      if (player.stars === requiredStars - 1) {
+        return `<span class="tag warn">Close</span>`;
+      }
+      return `<span class="tag bad">Not eligible</span>`;
+    }
+
+    function render() {
+      const q = search.value.trim().toLowerCase();
+      const rf = roleFilter.value;
+      const sf = starFilter.value;
+
+      const filtered = players.filter(player => {
+        const matchesSearch = !q || player.name.toLowerCase().includes(q) || player.team.toLowerCase().includes(q);
+        const matchesRole = rf === "all" || player.role === rf;
+        const matchesStars = sf === "all" || String(player.stars) === sf;
+        return matchesSearch && matchesRole && matchesStars;
+      });
+
+      grid.innerHTML = filtered.map(player => `
+        <article class="player">
+          <div class="player-top">
+            <div>
+              <div class="name">${player.name}</div>
+              <div class="role">${roleNames[player.role]} • ${player.team}</div>
+            </div>
+            <div class="star-row" aria-label="${player.stars} star rating">
+              ${starsHtml(player.stars)}
+            </div>
+          </div>
+
+          <div class="meta">
+            <div class="meta-item">
+              <span>Star Rating</span>
+              <strong>${player.stars} / 5</strong>
+            </div>
+            <div class="meta-item">
+              <span>Role Requirement</span>
+              <strong>${player.eligibleFor}+ Stars</strong>
+            </div>
+            <div class="meta-item">
+              <span>Status</span>
+              <strong>${player.stars >= player.eligibleFor ? "Meets Requirement" : "Below Requirement"}</strong>
+            </div>
+          </div>
+
+          ${eligibleTag(player)}
+        </article>
+      `).join("");
+
+      emptyState.style.display = filtered.length ? "none" : "block";
+      resultCount.textContent = `${filtered.length} result${filtered.length === 1 ? "" : "s"}`;
+      totalPlayers.textContent = players.length;
+      eligiblePlayers.textContent = filtered.filter(p => p.stars >= p.eligibleFor).length;
+    }
+
+    search.addEventListener("input", render);
+    roleFilter.addEventListener("change", render);
+    starFilter.addEventListener("change", render);
+
+    render();
+  </script>
+</body>
+</html>
