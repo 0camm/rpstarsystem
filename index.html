@@ -34,7 +34,7 @@
     }
 
     .wrap {
-      max-width: 1300px;
+      max-width: 1360px;
       margin: 0 auto;
       padding: 28px 18px 60px;
     }
@@ -93,10 +93,47 @@
 
     .subtitle {
       margin: 0;
-      max-width: 820px;
+      max-width: 860px;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.7;
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      width: fit-content;
+      border: 1px solid transparent;
+    }
+
+    .tag.good {
+      background: rgba(50, 213, 131, 0.12);
+      color: #b6f4d0;
+      border-color: rgba(50, 213, 131, 0.2);
+    }
+
+    .tag.warn {
+      background: rgba(253, 176, 34, 0.12);
+      color: #ffe1a6;
+      border-color: rgba(253, 176, 34, 0.2);
+    }
+
+    .tag.bad {
+      background: rgba(240, 68, 56, 0.12);
+      color: #ffb5b0;
+      border-color: rgba(240, 68, 56, 0.2);
     }
 
     .hero-side {
@@ -133,7 +170,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: 1.3fr 0.7fr 0.7fr 0.7fr;
+      grid-template-columns: 1.35fr 0.72fr 0.72fr 0.72fr;
       gap: 12px;
       margin: 18px 0;
     }
@@ -226,7 +263,7 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .name {
@@ -239,31 +276,12 @@
       font-size: 12px;
       color: var(--muted);
       margin-top: 4px;
-    }
-
-    .star-row {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      min-width: 86px;
-    }
-
-    .star {
-      width: 14px;
-      height: 14px;
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 72%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-      background: #3a4762;
-    }
-
-    .star.active {
-      background: linear-gradient(180deg, #ffd54a, #f7a928);
-      box-shadow: 0 0 12px rgba(247, 169, 40, 0.4);
+      line-height: 1.35;
     }
 
     .meta {
       display: grid;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 14px;
     }
 
@@ -276,34 +294,63 @@
 
     .meta-item span:first-child { color: var(--muted); }
 
-    .tag {
+    .rating-area {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .star-btn {
+      width: 20px;
+      height: 20px;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      width: fit-content;
-      border: 1px solid transparent;
+      justify-content: center;
+      color: #3a4762;
+      transition: transform 0.15s ease, color 0.15s ease;
     }
 
-    .tag.good {
-      background: rgba(50, 213, 131, 0.12);
-      color: #b6f4d0;
-      border-color: rgba(50, 213, 131, 0.2);
+    .star-btn::before {
+      content: "★";
+      font-size: 18px;
+      line-height: 1;
     }
 
-    .tag.warn {
-      background: rgba(253, 176, 34, 0.12);
-      color: #ffe1a6;
-      border-color: rgba(253, 176, 34, 0.2);
+    .star-btn.on {
+      color: #ffd54a;
+      text-shadow: 0 0 12px rgba(247, 169, 40, 0.35);
     }
 
-    .tag.bad {
-      background: rgba(240, 68, 56, 0.12);
-      color: #ffb5b0;
-      border-color: rgba(240, 68, 56, 0.2);
+    .star-btn:hover {
+      transform: translateY(-1px);
+      color: #ffde72;
+    }
+
+    .rating-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
+    }
+
+    .rating-pill strong {
+      letter-spacing: -0.02em;
     }
 
     .empty {
@@ -322,7 +369,7 @@
       text-align: center;
     }
 
-    .modal {
+    .note {
       margin-top: 14px;
       padding: 18px;
       background: rgba(16, 22, 36, 0.7);
@@ -333,24 +380,41 @@
       line-height: 1.6;
     }
 
-    textarea.control {
-      min-height: 120px;
-      resize: vertical;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    }
-
     @media (max-width: 1080px) {
-      .hero { grid-template-columns: 1fr; }
-      .controls { grid-template-columns: 1fr 1fr; }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 640px) {
-      .wrap { padding: 18px 12px 44px; }
-      .hero-main { padding: 20px; }
-      .controls { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-      .section-head { flex-direction: column; align-items: flex-start; }
+      .wrap {
+        padding: 18px 12px 44px;
+      }
+
+      .hero-main {
+        padding: 20px;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -361,33 +425,36 @@
         <div class="badge">★ RPL Star System</div>
         <h1>Active NBA Players</h1>
         <p class="subtitle">
-          Full star-rating website for active NBA players. Search by name, filter by stars, and check role eligibility instantly.
+          Every active player from the roster list is included here. Search by name, team, or position, then assign star ratings with the
+          built-in selector. The star rules are already built in.
         </p>
+        <div class="legend">
+          <span class="tag good">5★ needs 4-4</span>
+          <span class="tag good">4★ needs 3-5</span>
+          <span class="tag warn">3★ needs 2-4</span>
+          <span class="tag warn">2★ needs 1-3</span>
+          <span class="tag bad">1★ needs 0-2</span>
+        </div>
       </section>
 
       <aside class="hero-side">
         <div class="card stat-box">
           <div class="stat-label">Loaded Players</div>
           <div class="stat-value" id="totalPlayers">0</div>
-          <div class="stat-note">All active players currently loaded into the site.</div>
+          <div class="stat-note">All players in the roster file.</div>
         </div>
         <div class="card stat-box">
-          <div class="stat-label">Eligible Players</div>
-          <div class="stat-value" id="eligiblePlayers">0</div>
-          <div class="stat-note">Players who meet the selected requirement.</div>
+          <div class="stat-label">Rated Players</div>
+          <div class="stat-value" id="ratedPlayers">0</div>
+          <div class="stat-note">Players that already have a star assigned.</div>
         </div>
       </aside>
     </div>
 
     <div class="controls">
-      <input id="search" class="control" type="text" placeholder="Search player name or team..." />
-      <select id="roleFilter" class="control">
-        <option value="all">All Roles</option>
-        <option value="owner">Franchise Owner</option>
-        <option value="coach">Coach</option>
-        <option value="starter">Starter</option>
-        <option value="bench">Bench</option>
-      </select>
+      <input id="search" class="control" type="text" placeholder="Search player, team, or position..." />
+      <select id="teamFilter" class="control"></select>
+      <select id="positionFilter" class="control"></select>
       <select id="starFilter" class="control">
         <option value="all">All Star Ratings</option>
         <option value="5">5 Stars</option>
@@ -395,37 +462,22 @@
         <option value="3">3 Stars</option>
         <option value="2">2 Stars</option>
         <option value="1">1 Star</option>
-      </select>
-      <select id="eligibilityFilter" class="control">
-        <option value="all">All Statuses</option>
-        <option value="eligible">Eligible</option>
-        <option value="borderline">Borderline</option>
-        <option value="overqualified">Too High</option>
-        <option value="below">Below Requirement</option>
+        <option value="0">Unrated</option>
       </select>
     </div>
 
     <div class="actions">
-      <label class="btn" for="fileInput">Load JSON File</label>
-      <input id="fileInput" type="file" accept=".json" hidden />
-      <button class="btn" id="pasteBtn" type="button">Use Pasted JSON</button>
-      <button class="btn" id="resetBtn" type="button">Reset</button>
+      <button class="btn" id="clearBtn" type="button">Clear All Ratings</button>
+      <button class="btn" id="exportBtn" type="button">Export Ratings JSON</button>
     </div>
 
-    <div class="card modal">
-      <strong>Star requirements:</strong><br>
-      5 Star = 4–4<br>
-      4 Star = 3–5<br>
-      3 Star = 2–4<br>
-      2 Star = 1–3<br>
-      1 Star = 0–2
-    </div>
-
-    <div id="pasteArea" class="card modal" style="display:none;">
-      <div style="margin-bottom:10px;"><strong>Paste JSON here</strong></div>
-      <textarea id="jsonPaste" class="control" placeholder='[{"name":"LeBron James","team":"LAL","role":"owner","stars":5,"eligibleFor":4}]'></textarea>
-      <div style="height:10px;"></div>
-      <button class="btn" id="applyJsonBtn" type="button">Apply JSON</button>
+    <div class="note">
+      <strong>Rules:</strong><br>
+      5 Star players need 4-4<br>
+      4 Star players need 3-5<br>
+      3 Star players need 2-4<br>
+      2 Star players need 1-3<br>
+      1 Star players need 0-2
     </div>
 
     <section class="section">
@@ -441,173 +493,167 @@
     </section>
 
     <div class="footer">
-      Best setup: store every active NBA player in a JSON file and load it here.
+      This version includes every player from the uploaded roster file and stores ratings locally in your browser.
     </div>
   </div>
 
-  <script>
-    // Replace this with your full active NBA list.
-    // The structure below is what the page expects.
-    let players = [
-      { name: "Luka Dončić", team: "LAL", role: "owner", stars: 5, eligibleFor: 4 },
-      { name: "Shai Gilgeous-Alexander", team: "OKC", role: "owner", stars: 5, eligibleFor: 4 },
-      { name: "Nikola Jokić", team: "DEN", role: "owner", stars: 5, eligibleFor: 4 },
-      { name: "Jayson Tatum", team: "BOS", role: "coach", stars: 5, eligibleFor: 4 },
-      { name: "Anthony Edwards", team: "MIN", role: "starter", stars: 4, eligibleFor: 3 },
-      { name: "Tyrese Haliburton", team: "IND", role: "starter", stars: 4, eligibleFor: 3 },
-      { name: "Paolo Banchero", team: "ORL", role: "starter", stars: 4, eligibleFor: 3 },
-      { name: "Jalen Brunson", team: "NYK", role: "starter", stars: 4, eligibleFor: 3 },
-      { name: "Mikal Bridges", team: "NYK", role: "bench", stars: 3, eligibleFor: 2 }
-    ];
+  <script id="player-data" type="application/json">
+[{"name": "Precious Achiuwa", "team": "SAC", "number": "9", "position": "F", "height": "6-8", "weight": "243 lbs", "last_attended": "Memphis", "country": "Nigeria"}, {"name": "Steven Adams", "team": "HOU", "number": "12", "position": "C", "height": "6-11", "weight": "265 lbs", "last_attended": "Pittsburgh", "country": "New Zealand"}, {"name": "Bam Adebayo", "team": "MIA", "number": "13", "position": "C-F", "height": "6-9", "weight": "255 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Ochai Agbaji", "team": "BKN", "number": "30", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "Santi Aldama", "team": "MEM", "number": "7", "position": "F-C", "height": "7-0", "weight": "215 lbs", "last_attended": "Loyola-Maryland", "country": "Spain"}, {"name": "Trey Alexander", "team": "NOP", "number": "23", "position": "G", "height": "6-5", "weight": "185 lbs", "last_attended": "Creighton", "country": "USA"}, {"name": "Nickeil Alexander-Walker", "team": "ATL", "number": "7", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "Virginia Tech", "country": "Canada"}, {"name": "Grayson Allen", "team": "PHX", "number": "8", "position": "G", "height": "6-3", "weight": "198 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Jarrett Allen", "team": "CLE", "number": "31", "position": "C", "height": "6-9", "weight": "243 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Jose Alvarado", "team": "NYK", "number": "5", "position": "G", "height": "6-0", "weight": "179 lbs", "last_attended": "Georgia Tech", "country": "USA"}, {"name": "Kyle Anderson", "team": "MIN", "number": "12", "position": "F-G", "height": "6-8", "weight": "230 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Alex Antetokounmpo", "team": "MIL", "number": "29", "position": "F", "height": "6-8", "weight": "214 lbs", "last_attended": "", "country": "Greece"}, {"name": "Giannis Antetokounmpo", "team": "MIL", "number": "34", "position": "F", "height": "6-11", "weight": "243 lbs", "last_attended": "Filathlitikos", "country": "Greece"}, {"name": "Thanasis Antetokounmpo", "team": "MIL", "number": "43", "position": "F", "height": "6-7", "weight": "219 lbs", "last_attended": "Panathinaikos", "country": "Greece"}, {"name": "Cole Anthony", "team": "FA", "number": "", "position": "G", "height": "6-2", "weight": "185 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "OG Anunoby", "team": "NYK", "number": "8", "position": "F-G", "height": "6-7", "weight": "240 lbs", "last_attended": "Indiana", "country": "United Kingdom"}, {"name": "Deni Avdija", "team": "POR", "number": "8", "position": "F", "height": "6-8", "weight": "228 lbs", "last_attended": "Maccabi Tel Aviv", "country": "Israel"}, {"name": "Deandre Ayton", "team": "LAL", "number": "5", "position": "C", "height": "7-0", "weight": "252 lbs", "last_attended": "Arizona", "country": "Bahamas"}, {"name": "Marvin Bagley III", "team": "DAL", "number": "35", "position": "F", "height": "6-10", "weight": "235 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Ace Bailey", "team": "UTA", "number": "19", "position": "F", "height": "6-9", "weight": "200 lbs", "last_attended": "Rutgers", "country": "USA"}, {"name": "Adama Bal", "team": "FA", "number": "", "position": "G", "height": "6-7", "weight": "190 lbs", "last_attended": "Santa Clara", "country": "France"}, {"name": "Patrick Baldwin Jr.", "team": "SAC", "number": "23", "position": "F", "height": "7-0", "weight": "220 lbs", "last_attended": "Wisconsin-Milwaukee", "country": "USA"}, {"name": "LaMelo Ball", "team": "CHA", "number": "1", "position": "G", "height": "6-7", "weight": "180 lbs", "last_attended": "Illawarra", "country": "USA"}, {"name": "Lonzo Ball", "team": "FA", "number": "", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Mo Bamba", "team": "FA", "number": "", "position": "C", "height": "7-0", "weight": "231 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Paolo Banchero", "team": "ORL", "number": "5", "position": "F", "height": "6-10", "weight": "250 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Desmond Bane", "team": "ORL", "number": "3", "position": "G", "height": "6-6", "weight": "215 lbs", "last_attended": "TCU", "country": "USA"}, {"name": "Dalano Banton", "team": "BOS", "number": "45", "position": "F", "height": "6-8", "weight": "203 lbs", "last_attended": "Nebraska", "country": "Canada"}, {"name": "Dominick Barlow", "team": "PHI", "number": "25", "position": "F", "height": "6-9", "weight": "224 lbs", "last_attended": "Overtime Elite", "country": "USA"}, {"name": "Harrison Barnes", "team": "SAS", "number": "40", "position": "F", "height": "6-7", "weight": "225 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Scottie Barnes", "team": "TOR", "number": "4", "position": "F-G", "height": "6-8", "weight": "237 lbs", "last_attended": "Florida State", "country": "USA"}, {"name": "Brooks Barnhizer", "team": "OKC", "number": "23", "position": "G", "height": "6-5", "weight": "230 lbs", "last_attended": "Northwestern", "country": "USA"}, {"name": "RJ Barrett", "team": "TOR", "number": "9", "position": "F-G", "height": "6-6", "weight": "214 lbs", "last_attended": "Duke", "country": "Canada"}, {"name": "Charles Bassey", "team": "GSW", "number": "28", "position": "C-F", "height": "6-10", "weight": "230 lbs", "last_attended": "Western Kentucky", "country": "Nigeria"}, {"name": "Jamison Battle", "team": "TOR", "number": "77", "position": "F", "height": "6-7", "weight": "220 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Nicolas Batum", "team": "LAC", "number": "33", "position": "G-F", "height": "6-7", "weight": "230 lbs", "last_attended": "Le Mans", "country": "France"}, {"name": "Bradley Beal", "team": "LAC", "number": "0", "position": "G", "height": "6-4", "weight": "207 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "MarJon Beauchamp", "team": "PHI", "number": "16", "position": "F", "height": "6-7", "weight": "199 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "Joan Beringer", "team": "MIN", "number": "19", "position": "F", "height": "6-11", "weight": "230 lbs", "last_attended": "-", "country": "France"}, {"name": "Saddiq Bey", "team": "NOP", "number": "41", "position": "G-F", "height": "6-8", "weight": "215 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Goga Bitadze", "team": "ORL", "number": "35", "position": "C-F", "height": "6-11", "weight": "250 lbs", "last_attended": "Mega Basket", "country": "Georgia"}, {"name": "Bismack Biyombo", "team": "SAS", "number": "18", "position": "C", "height": "6-8", "weight": "255 lbs", "last_attended": "Baloncesto Fuenlabrada", "country": "DRC"}, {"name": "Anthony Black", "team": "ORL", "number": "0", "position": "G", "height": "6-7", "weight": "200 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Leaky Black", "team": "WAS", "number": "12", "position": "F", "height": "6-6", "weight": "209 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Buddy Boeheim", "team": "FA", "number": "", "position": "F", "height": "6-5", "weight": "205 lbs", "last_attended": "Syracuse", "country": "USA"}, {"name": "Bogdan Bogdanović", "team": "LAC", "number": "7", "position": "G", "height": "6-5", "weight": "225 lbs", "last_attended": "Fenerbahce", "country": "Serbia"}, {"name": "Adem Bona", "team": "PHI", "number": "30", "position": "F", "height": "6-10", "weight": "235 lbs", "last_attended": "UCLA", "country": "Nigeria"}, {"name": "Devin Booker", "team": "PHX", "number": "1", "position": "G", "height": "6-5", "weight": "206 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Chris Boucher", "team": "FA", "number": "", "position": "F", "height": "6-8", "weight": "200 lbs", "last_attended": "Oregon", "country": "Saint Lucia"}, {"name": "Jamaree Bouyea", "team": "PHX", "number": "17", "position": "G", "height": "6-2", "weight": "180 lbs", "last_attended": "San Francisco", "country": "USA"}, {"name": "Tony Bradley", "team": "ATL", "number": "13", "position": "C-F", "height": "6-10", "weight": "248 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Malaki Branham", "team": "FA", "number": "", "position": "F", "height": "6-4", "weight": "180 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Christian Braun", "team": "DEN", "number": "0", "position": "G", "height": "6-6", "weight": "220 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "Koby Brea", "team": "PHX", "number": "14", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Mikal Bridges", "team": "NYK", "number": "25", "position": "G-F", "height": "6-6", "weight": "209 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Miles Bridges", "team": "CHA", "number": "0", "position": "F", "height": "6-7", "weight": "225 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Dillon Brooks", "team": "PHX", "number": "3", "position": "G-F", "height": "6-7", "weight": "225 lbs", "last_attended": "Oregon", "country": "Canada"}, {"name": "Johni Broome", "team": "PHI", "number": "22", "position": "F", "height": "6-9", "weight": "244 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Bruce Brown", "team": "DEN", "number": "11", "position": "G-F", "height": "6-4", "weight": "202 lbs", "last_attended": "Miami", "country": "USA"}, {"name": "Darius Brown", "team": "FA", "number": "", "position": "G", "height": "6-2", "weight": "192 lbs", "last_attended": "Utah State", "country": "USA"}, {"name": "Jaylen Brown", "team": "BOS", "number": "7", "position": "G-F", "height": "6-6", "weight": "223 lbs", "last_attended": "California", "country": "USA"}, {"name": "Kobe Brown", "team": "IND", "number": "24", "position": "F", "height": "6-7", "weight": "250 lbs", "last_attended": "Missouri", "country": "USA"}, {"name": "Jalen Brunson", "team": "NYK", "number": "11", "position": "G", "height": "6-2", "weight": "190 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Carter Bryant", "team": "SAS", "number": "11", "position": "F", "height": "6-6", "weight": "220 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Thomas Bryant", "team": "CLE", "number": "3", "position": "C-F", "height": "6-9", "weight": "248 lbs", "last_attended": "Indiana", "country": "USA"}, {"name": "Kobe Bufkin", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "195 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "Tyler Burton", "team": "FA", "number": "", "position": "F", "height": "6-7", "weight": "215 lbs", "last_attended": "Richmond", "country": "USA"}, {"name": "Jimmy Butler III", "team": "GSW", "number": "10", "position": "F", "height": "6-6", "weight": "230 lbs", "last_attended": "Marquette", "country": "USA"}, {"name": "Matas Buzelis", "team": "CHI", "number": "14", "position": "F", "height": "6-8", "weight": "196 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "Jamal Cain", "team": "ORL", "number": "8", "position": "F", "height": "6-7", "weight": "191 lbs", "last_attended": "Oakland", "country": "USA"}, {"name": "Kentavious Caldwell-Pope", "team": "MEM", "number": "3", "position": "G", "height": "6-5", "weight": "204 lbs", "last_attended": "Georgia", "country": "USA"}, {"name": "Toumani Camara", "team": "POR", "number": "33", "position": "F", "height": "6-7", "weight": "230 lbs", "last_attended": "Dayton", "country": "Belgium"}, {"name": "Clint Capela", "team": "HOU", "number": "30", "position": "C", "height": "6-10", "weight": "256 lbs", "last_attended": "Elan Chalon", "country": "Switzerland"}, {"name": "Dylan Cardwell", "team": "SAC", "number": "32", "position": "C", "height": "6-10", "weight": "255 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Branden Carlson", "team": "OKC", "number": "15", "position": "C", "height": "7-0", "weight": "220 lbs", "last_attended": "Utah", "country": "USA"}, {"name": "Bub Carrington", "team": "WAS", "number": "7", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "Pittsburgh", "country": "USA"}, {"name": "Devin Carter", "team": "SAC", "number": "22", "position": "G", "height": "6-2", "weight": "195 lbs", "last_attended": "Providence", "country": "USA"}, {"name": "Jevon Carter", "team": "ORL", "number": "2", "position": "G", "height": "6-0", "weight": "190 lbs", "last_attended": "West Virginia", "country": "USA"}, {"name": "Wendell Carter Jr.", "team": "ORL", "number": "34", "position": "C-F", "height": "6-10", "weight": "270 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Alex Caruso", "team": "OKC", "number": "9", "position": "G", "height": "6-5", "weight": "186 lbs", "last_attended": "Texas A&M", "country": "USA"}, {"name": "Stephon Castle", "team": "SAS", "number": "5", "position": "G", "height": "6-6", "weight": "215 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Colin Castleton", "team": "ORL", "number": "14", "position": "C", "height": "6-10", "weight": "250 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Julian Champagnie", "team": "SAS", "number": "30", "position": "F", "height": "6-7", "weight": "217 lbs", "last_attended": "St. John's", "country": "USA"}, {"name": "Justin Champagnie", "team": "WAS", "number": "9", "position": "G-F", "height": "6-6", "weight": "206 lbs", "last_attended": "Pittsburgh", "country": "USA"}, {"name": "Kennedy Chandler", "team": "FA", "number": "", "position": "G", "height": "6-0", "weight": "170 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Cam Christie", "team": "LAC", "number": "12", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Minnesota", "country": "USA"}, {"name": "Max Christie", "team": "DAL", "number": "00", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Moussa Cisse", "team": "DAL", "number": "30", "position": "C", "height": "6-11", "weight": "220 lbs", "last_attended": "Memphis", "country": "Guinea"}, {"name": "Sidy Cissoko", "team": "POR", "number": "91", "position": "G", "height": "6-6", "weight": "220 lbs", "last_attended": "NBA G League Ignite", "country": "France"}, {"name": "Jaylen Clark", "team": "MIN", "number": "22", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Brandon Clarke", "team": "MEM", "number": "15", "position": "F", "height": "6-8", "weight": "215 lbs", "last_attended": "Gonzaga", "country": "Canada"}, {"name": "Jordan Clarkson", "team": "NYK", "number": "00", "position": "G", "height": "6-5", "weight": "194 lbs", "last_attended": "Missouri", "country": "USA"}, {"name": "Nic Claxton", "team": "BKN", "number": "33", "position": "C", "height": "6-11", "weight": "215 lbs", "last_attended": "Georgia", "country": "USA"}, {"name": "Walter Clayton Jr.", "team": "MEM", "number": "4", "position": "G", "height": "6-4", "weight": "195 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Nique Clifford", "team": "SAC", "number": "5", "position": "G", "height": "6-5", "weight": "175 lbs", "last_attended": "Colorado State", "country": "USA"}, {"name": "Donovan Clingan", "team": "POR", "number": "23", "position": "C", "height": "7-2", "weight": "280 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Noah Clowney", "team": "BKN", "number": "21", "position": "F-C", "height": "6-10", "weight": "210 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Amir Coffey", "team": "PHX", "number": "2", "position": "G-F", "height": "6-7", "weight": "210 lbs", "last_attended": "Minnesota", "country": "USA"}, {"name": "Isaiah Collier", "team": "UTA", "number": "8", "position": "G", "height": "6-4", "weight": "210 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "John Collins", "team": "LAC", "number": "20", "position": "F-C", "height": "6-9", "weight": "226 lbs", "last_attended": "Wake Forest", "country": "USA"}, {"name": "Zach Collins", "team": "CHI", "number": "12", "position": "F-C", "height": "6-9", "weight": "240 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Mike Conley", "team": "MIN", "number": "10", "position": "G", "height": "6-1", "weight": "175 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Pat Connaughton", "team": "CHA", "number": "21", "position": "G", "height": "6-5", "weight": "209 lbs", "last_attended": "Notre Dame", "country": "USA"}, {"name": "Javonte Cooke", "team": "FA", "number": "", "position": "G", "height": "6-6", "weight": "185 lbs", "last_attended": "Winston-Salem", "country": "USA"}, {"name": "Sharife Cooper", "team": "WAS", "number": "13", "position": "G", "height": "6-0", "weight": "176 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Bilal Coulibaly", "team": "WAS", "number": "0", "position": "G", "height": "6-7", "weight": "195 lbs", "last_attended": "Metropolitans 92", "country": "France"}, {"name": "Cedric Coward", "team": "MEM", "number": "23", "position": "G", "height": "6-5", "weight": "206 lbs", "last_attended": "Washington State", "country": "USA"}, {"name": "Isaiah Crawford", "team": "HOU", "number": "27", "position": "F", "height": "6-6", "weight": "220 lbs", "last_attended": "Louisiana Tech", "country": "USA"}, {"name": "LJ Cryer", "team": "GSW", "number": "18", "position": "G", "height": "6-0", "weight": "", "last_attended": "Houston", "country": "USA"}, {"name": "Cade Cunningham", "team": "DET", "number": "2", "position": "G", "height": "6-6", "weight": "220 lbs", "last_attended": "Oklahoma State", "country": "USA"}, {"name": "Seth Curry", "team": "GSW", "number": "31", "position": "G", "height": "6-1", "weight": "185 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Stephen Curry", "team": "GSW", "number": "30", "position": "G", "height": "6-2", "weight": "185 lbs", "last_attended": "Davidson", "country": "USA"}, {"name": "Tristan da Silva", "team": "ORL", "number": "23", "position": "F", "height": "6-8", "weight": "217 lbs", "last_attended": "Colorado", "country": "Germany"}, {"name": "Pacôme Dadiet", "team": "NYK", "number": "4", "position": "F", "height": "6-9", "weight": "210 lbs", "last_attended": "Ratiopharm Ulm", "country": "France"}, {"name": "Dyson Daniels", "team": "ATL", "number": "5", "position": "G", "height": "6-7", "weight": "199 lbs", "last_attended": "NBA G League Ignite", "country": "Australia"}, {"name": "N'Faly Dante", "team": "FA", "number": "", "position": "C", "height": "6-11", "weight": "230 lbs", "last_attended": "Oregon", "country": "Mali"}, {"name": "Anthony Davis", "team": "WAS", "number": "23", "position": "F-C", "height": "6-10", "weight": "253 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "JD Davison", "team": "HOU", "number": "4", "position": "G", "height": "6-1", "weight": "195 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Egor Dëmin", "team": "BKN", "number": "8", "position": "G", "height": "6-8", "weight": "200 lbs", "last_attended": "Brigham Young", "country": "Russia"}, {"name": "RayJ Dennis", "team": "ATL", "number": "00", "position": "G", "height": "6-1", "weight": "180 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "DeMar DeRozan", "team": "SAC", "number": "10", "position": "G-F", "height": "6-6", "weight": "220 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Moussa Diabaté", "team": "CHA", "number": "14", "position": "F", "height": "6-10", "weight": "210 lbs", "last_attended": "Michigan", "country": "France"}, {"name": "Mohamed Diawara", "team": "NYK", "number": "51", "position": "F", "height": "6-9", "weight": "225 lbs", "last_attended": "-", "country": "France"}, {"name": "Gradey Dick", "team": "TOR", "number": "1", "position": "G-F", "height": "6-7", "weight": "200 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "Hunter Dickinson", "team": "NOP", "number": "4", "position": "C", "height": "7-1", "weight": "255 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "Ousmane Dieng", "team": "MIL", "number": "21", "position": "F", "height": "6-9", "weight": "185 lbs", "last_attended": "New Zealand Breakers", "country": "France"}, {"name": "Rob Dillingham", "team": "CHI", "number": "7", "position": "G", "height": "6-2", "weight": "175 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Donte DiVincenzo", "team": "MIN", "number": "0", "position": "G", "height": "6-4", "weight": "203 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Luka Dončić", "team": "LAL", "number": "77", "position": "F-G", "height": "6-8", "weight": "230 lbs", "last_attended": "Real Madrid", "country": "Slovenia"}, {"name": "Luguentz Dort", "team": "OKC", "number": "5", "position": "G", "height": "6-4", "weight": "220 lbs", "last_attended": "Arizona State", "country": "Canada"}, {"name": "Ayo Dosunmu", "team": "MIN", "number": "13", "position": "G", "height": "6-4", "weight": "201 lbs", "last_attended": "Illinois", "country": "USA"}, {"name": "Andre Drummond", "team": "PHI", "number": "1", "position": "C", "height": "6-11", "weight": "279 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Kris Dunn", "team": "LAC", "number": "8", "position": "G", "height": "6-3", "weight": "205 lbs", "last_attended": "Providence", "country": "USA"}, {"name": "Ryan Dunn", "team": "PHX", "number": "0", "position": "F", "height": "6-7", "weight": "216 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "Kevin Durant", "team": "HOU", "number": "7", "position": "F", "height": "6-11", "weight": "240 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Jalen Duren", "team": "DET", "number": "0", "position": "C", "height": "6-10", "weight": "250 lbs", "last_attended": "Memphis", "country": "USA"}, {"name": "Tari Eason", "team": "HOU", "number": "17", "position": "F", "height": "6-8", "weight": "215 lbs", "last_attended": "Louisiana State", "country": "USA"}, {"name": "Zach Edey", "team": "MEM", "number": "14", "position": "C", "height": "7-3", "weight": "305 lbs", "last_attended": "Purdue", "country": "Canada"}, {"name": "VJ Edgecombe", "team": "PHI", "number": "77", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "Anthony Edwards", "team": "MIN", "number": "5", "position": "G", "height": "6-4", "weight": "225 lbs", "last_attended": "Georgia", "country": "USA"}, {"name": "Justin Edwards", "team": "PHI", "number": "11", "position": "F", "height": "6-7", "weight": "217 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Keon Ellis", "team": "CLE", "number": "14", "position": "G", "height": "6-4", "weight": "175 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Joel Embiid", "team": "PHI", "number": "21", "position": "C-F", "height": "7-0", "weight": "270 lbs", "last_attended": "Kansas", "country": "Cameroon"}, {"name": "Tristan Enaruna", "team": "CLE", "number": "21", "position": "F", "height": "6-7", "weight": "220 lbs", "last_attended": "Cleveland State", "country": "Netherlands"}, {"name": "Noa Essengue", "team": "CHI", "number": "24", "position": "F", "height": "6-8", "weight": "194 lbs", "last_attended": "-", "country": "France"}, {"name": "Tyson Etienne", "team": "BKN", "number": "10", "position": "G", "height": "6-0", "weight": "200 lbs", "last_attended": "Wichita State", "country": "USA"}, {"name": "Drew Eubanks", "team": "SAC", "number": "19", "position": "F-C", "height": "6-10", "weight": "245 lbs", "last_attended": "Oregon State", "country": "USA"}, {"name": "Tosan Evbuomwan", "team": "CHA", "number": "20", "position": "F", "height": "6-8", "weight": "217 lbs", "last_attended": "Princeton", "country": "United Kingdom"}, {"name": "Jeremiah Fears", "team": "NOP", "number": "0", "position": "G", "height": "6-3", "weight": "190 lbs", "last_attended": "Oklahoma", "country": "USA"}, {"name": "Kyle Filipowski", "team": "UTA", "number": "22", "position": "C", "height": "6-11", "weight": "250 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Dorian Finney-Smith", "team": "HOU", "number": "2", "position": "F", "height": "6-7", "weight": "220 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Cooper Flagg", "team": "DAL", "number": "32", "position": "F", "height": "6-9", "weight": "205 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Rasheer Fleming", "team": "PHX", "number": "20", "position": "F", "height": "6-9", "weight": "240 lbs", "last_attended": "St. Joseph's (PA)", "country": "USA"}, {"name": "Trentyn Flowers", "team": "FA", "number": "", "position": "F", "height": "6-9", "weight": "185 lbs", "last_attended": "Adelaide", "country": "USA"}, {"name": "Simone Fontecchio", "team": "MIA", "number": "0", "position": "F", "height": "6-7", "weight": "209 lbs", "last_attended": "Baskonia", "country": "Italy"}, {"name": "De'Aaron Fox", "team": "SAS", "number": "4", "position": "G", "height": "6-3", "weight": "185 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Enrique Freeman", "team": "MIN", "number": "25", "position": "F", "height": "6-9", "weight": "220 lbs", "last_attended": "Akron", "country": "USA"}, {"name": "Markelle Fultz", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "209 lbs", "last_attended": "Washington", "country": "USA"}, {"name": "Johnny Furphy", "team": "IND", "number": "12", "position": "G", "height": "6-8", "weight": "200 lbs", "last_attended": "Kansas", "country": "Australia"}, {"name": "Daniel Gafford", "team": "DAL", "number": "21", "position": "F-C", "height": "6-10", "weight": "265 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Andersson Garcia", "team": "FA", "number": "", "position": "F", "height": "6-7", "weight": "220 lbs", "last_attended": "Texas A&M", "country": "Dominican Republic"}, {"name": "Myron Gardner", "team": "MIA", "number": "15", "position": "F", "height": "6-5", "weight": "220 lbs", "last_attended": "Arkansas-Little Rock", "country": "USA"}, {"name": "Darius Garland", "team": "LAC", "number": "10", "position": "G", "height": "6-1", "weight": "192 lbs", "last_attended": "Vanderbilt", "country": "USA"}, {"name": "Luka Garza", "team": "BOS", "number": "52", "position": "C", "height": "6-10", "weight": "243 lbs", "last_attended": "Iowa", "country": "USA"}, {"name": "Keyonte George", "team": "UTA", "number": "3", "position": "G", "height": "6-4", "weight": "185 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "Kyshawn George", "team": "WAS", "number": "18", "position": "F", "height": "6-8", "weight": "200 lbs", "last_attended": "Miami", "country": "Switzerland"}, {"name": "Paul George", "team": "PHI", "number": "8", "position": "F", "height": "6-8", "weight": "230 lbs", "last_attended": "Fresno State", "country": "USA"}, {"name": "Taj Gibson", "team": "MEM", "number": "67", "position": "F", "height": "6-9", "weight": "232 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Josh Giddey", "team": "CHI", "number": "3", "position": "G", "height": "6-7", "weight": "214 lbs", "last_attended": "NBA Global Academy", "country": "Australia"}, {"name": "Keshon Gilbert", "team": "ATL", "number": "", "position": "G", "height": "6-4", "weight": "200 lbs", "last_attended": "Iowa State", "country": "USA"}, {"name": "Shai Gilgeous-Alexander", "team": "OKC", "number": "2", "position": "G", "height": "6-6", "weight": "195 lbs", "last_attended": "Kentucky", "country": "Canada"}, {"name": "Anthony Gill", "team": "WAS", "number": "16", "position": "F", "height": "6-7", "weight": "230 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "Collin Gillespie", "team": "PHX", "number": "12", "position": "G", "height": "6-1", "weight": "195 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Rudy Gobert", "team": "MIN", "number": "27", "position": "C", "height": "7-1", "weight": "258 lbs", "last_attended": "Cholet", "country": "France"}, {"name": "Vladislav Goldin", "team": "MIA", "number": "50", "position": "C", "height": "7-0", "weight": "250 lbs", "last_attended": "Michigan", "country": "Russia"}, {"name": "Hugo González", "team": "BOS", "number": "28", "position": "G", "height": "6-6", "weight": "200 lbs", "last_attended": "Real Madrid", "country": "Spain"}, {"name": "Jordan Goodwin", "team": "PHX", "number": "23", "position": "G", "height": "6-3", "weight": "215 lbs", "last_attended": "St. Louis", "country": "USA"}, {"name": "Aaron Gordon", "team": "DEN", "number": "32", "position": "F", "height": "6-8", "weight": "235 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Eric Gordon", "team": "FA", "number": "", "position": "G", "height": "6-3", "weight": "215 lbs", "last_attended": "Indiana", "country": "USA"}, {"name": "Jerami Grant", "team": "POR", "number": "9", "position": "F", "height": "6-7", "weight": "213 lbs", "last_attended": "Syracuse", "country": "USA"}, {"name": "Hayden Gray", "team": "UTA", "number": "", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "California-San Diego", "country": "USA"}, {"name": "AJ Green", "team": "MIL", "number": "20", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "Northern Iowa", "country": "USA"}, {"name": "Draymond Green", "team": "GSW", "number": "23", "position": "F", "height": "6-6", "weight": "230 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Jalen Green", "team": "PHX", "number": "4", "position": "G", "height": "6-4", "weight": "186 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "Javonte Green", "team": "DET", "number": "31", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "Radford", "country": "USA"}, {"name": "Jeff Green", "team": "HOU", "number": "32", "position": "F", "height": "6-8", "weight": "235 lbs", "last_attended": "Georgetown", "country": "USA"}, {"name": "Josh Green", "team": "CHA", "number": "10", "position": "G", "height": "6-6", "weight": "200 lbs", "last_attended": "Arizona", "country": "Australia"}, {"name": "Quentin Grimes", "team": "PHI", "number": "5", "position": "G", "height": "6-5", "weight": "207 lbs", "last_attended": "Houston", "country": "USA"}, {"name": "Mouhamadou Gueye", "team": "CHI", "number": "16", "position": "F", "height": "6-9", "weight": "210 lbs", "last_attended": "Pittsburgh", "country": "USA"}, {"name": "Mouhamed Gueye", "team": "ATL", "number": "18", "position": "F", "height": "6-11", "weight": "210 lbs", "last_attended": "Washington State", "country": "Senegal"}, {"name": "Rui Hachimura", "team": "LAL", "number": "28", "position": "F", "height": "6-8", "weight": "230 lbs", "last_attended": "Gonzaga", "country": "Japan"}, {"name": "Tyrese Haliburton", "team": "IND", "number": "0", "position": "G", "height": "6-5", "weight": "185 lbs", "last_attended": "Iowa State", "country": "USA"}, {"name": "PJ Hall", "team": "CHA", "number": "16", "position": "C", "height": "6-8", "weight": "245 lbs", "last_attended": "Clemson", "country": "USA"}, {"name": "Tim Hardaway Jr.", "team": "DEN", "number": "10", "position": "G-F", "height": "6-5", "weight": "205 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "James Harden", "team": "CLE", "number": "1", "position": "G", "height": "6-5", "weight": "220 lbs", "last_attended": "Arizona State", "country": "USA"}, {"name": "Jaden Hardy", "team": "WAS", "number": "8", "position": "G", "height": "6-3", "weight": "198 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "Elijah Harkless", "team": "UTA", "number": "16", "position": "G", "height": "6-3", "weight": "195 lbs", "last_attended": "UNLV", "country": "USA"}, {"name": "Dylan Harper", "team": "SAS", "number": "2", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Rutgers", "country": "USA"}, {"name": "Ron Harper Jr.", "team": "BOS", "number": "13", "position": "G-F", "height": "6-5", "weight": "233 lbs", "last_attended": "Rutgers", "country": "USA"}, {"name": "Gary Harris", "team": "MIL", "number": "11", "position": "G", "height": "6-4", "weight": "210 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Tobias Harris", "team": "DET", "number": "12", "position": "F", "height": "6-8", "weight": "226 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Josh Hart", "team": "NYK", "number": "3", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Isaiah Hartenstein", "team": "OKC", "number": "55", "position": "C-F", "height": "7-0", "weight": "250 lbs", "last_attended": "Zalgiris", "country": "Germany"}, {"name": "Sam Hauser", "team": "BOS", "number": "30", "position": "F", "height": "6-7", "weight": "217 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "Jordan Hawkins", "team": "NOP", "number": "24", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Jaxson Hayes", "team": "LAL", "number": "11", "position": "C-F", "height": "7-0", "weight": "220 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Killian Hayes", "team": "SAC", "number": "7", "position": "G", "height": "6-4", "weight": "195 lbs", "last_attended": "Ratiopharm Ulm", "country": "France"}, {"name": "Nigel Hayes-Davis", "team": "FA", "number": "", "position": "F", "height": "6-7", "weight": "254 lbs", "last_attended": "Wisconsin", "country": "USA"}, {"name": "Scoot Henderson", "team": "POR", "number": "00", "position": "G", "height": "6-3", "weight": "207 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "Taylor Hendricks", "team": "MEM", "number": "22", "position": "F", "height": "6-9", "weight": "215 lbs", "last_attended": "Central Florida", "country": "USA"}, {"name": "Chucky Hepburn", "team": "TOR", "number": "24", "position": "G", "height": "6-0", "weight": "190 lbs", "last_attended": "Louisville", "country": "USA"}, {"name": "Tyler Herro", "team": "MIA", "number": "14", "position": "G", "height": "6-5", "weight": "195 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Buddy Hield", "team": "ATL", "number": "8", "position": "G", "height": "6-4", "weight": "220 lbs", "last_attended": "Oklahoma", "country": "Bahamas"}, {"name": "Haywood Highsmith", "team": "PHX", "number": "7", "position": "F", "height": "6-5", "weight": "220 lbs", "last_attended": "Wheeling Jesuit", "country": "USA"}, {"name": "Blake Hinson", "team": "UTA", "number": "2", "position": "F", "height": "6-8", "weight": "230 lbs", "last_attended": "Pittsburgh", "country": "USA"}, {"name": "Aaron Holiday", "team": "HOU", "number": "0", "position": "G", "height": "6-0", "weight": "185 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Jrue Holiday", "team": "POR", "number": "5", "position": "G", "height": "6-4", "weight": "220 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Ronald Holland II", "team": "DET", "number": "5", "position": "F", "height": "6-8", "weight": "206 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "DaRon Holmes II", "team": "DEN", "number": "14", "position": "F", "height": "6-9", "weight": "225 lbs", "last_attended": "Dayton", "country": "USA"}, {"name": "Chet Holmgren", "team": "OKC", "number": "7", "position": "C-F", "height": "7-1", "weight": "208 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Al Horford", "team": "GSW", "number": "20", "position": "C-F", "height": "6-8", "weight": "240 lbs", "last_attended": "Florida", "country": "Dominican Republic"}, {"name": "Caleb Houstan", "team": "FA", "number": "", "position": "G", "height": "6-8", "weight": "205 lbs", "last_attended": "Michigan", "country": "Canada"}, {"name": "Jett Howard", "team": "ORL", "number": "13", "position": "G", "height": "6-8", "weight": "215 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "Kevin Huerter", "team": "DET", "number": "27", "position": "G-F", "height": "6-6", "weight": "190 lbs", "last_attended": "Maryland", "country": "USA"}, {"name": "Jay Huff", "team": "IND", "number": "32", "position": "C", "height": "7-1", "weight": "240 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "Ariel Hukporti", "team": "NYK", "number": "55", "position": "C", "height": "7-0", "weight": "246 lbs", "last_attended": "Riesen Ludwigsburg", "country": "Germany"}, {"name": "De'Andre Hunter", "team": "SAC", "number": "15", "position": "F-G", "height": "6-7", "weight": "221 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "CJ Huntley", "team": "PHX", "number": "22", "position": "F", "height": "6-11", "weight": "230 lbs", "last_attended": "Appalachian State", "country": "USA"}, {"name": "Bones Hyland", "team": "MIN", "number": "8", "position": "G", "height": "6-2", "weight": "169 lbs", "last_attended": "Virginia Commonwealth", "country": "USA"}, {"name": "Oso Ighodaro", "team": "PHX", "number": "11", "position": "F", "height": "6-11", "weight": "235 lbs", "last_attended": "Marquette", "country": "USA"}, {"name": "Joe Ingles", "team": "MIN", "number": "7", "position": "F-G", "height": "6-8", "weight": "220 lbs", "last_attended": "Maccabi Tel Aviv", "country": "Australia"}, {"name": "Brandon Ingram", "team": "TOR", "number": "3", "position": "F", "height": "6-8", "weight": "190 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Harrison Ingram", "team": "SAS", "number": "55", "position": "F", "height": "6-5", "weight": "230 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Kyrie Irving", "team": "DAL", "number": "11", "position": "G", "height": "6-2", "weight": "195 lbs", "last_attended": "Duke", "country": "Australia"}, {"name": "Jonathan Isaac", "team": "ORL", "number": "1", "position": "F", "height": "6-10", "weight": "230 lbs", "last_attended": "Florida State", "country": "USA"}, {"name": "Jaden Ivey", "team": "FA", "number": "", "position": "G", "height": "6-3", "weight": "195 lbs", "last_attended": "Purdue", "country": "USA"}, {"name": "GG Jackson", "team": "MEM", "number": "45", "position": "F", "height": "6-9", "weight": "210 lbs", "last_attended": "South Carolina", "country": "USA"}, {"name": "Isaiah Jackson", "team": "LAC", "number": "23", "position": "F", "height": "6-8", "weight": "205 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Quenton Jackson", "team": "IND", "number": "29", "position": "G", "height": "6-4", "weight": "173 lbs", "last_attended": "Texas A&M", "country": "USA"}, {"name": "Andre Jackson Jr.", "team": "MIL", "number": "44", "position": "G", "height": "6-6", "weight": "209 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Jaren Jackson Jr.", "team": "UTA", "number": "20", "position": "F-C", "height": "6-10", "weight": "242 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Trayce Jackson-Davis", "team": "TOR", "number": "32", "position": "F", "height": "6-9", "weight": "245 lbs", "last_attended": "Indiana", "country": "USA"}, {"name": "Kasparas Jakučionis", "team": "MIA", "number": "25", "position": "G", "height": "6-5", "weight": "200 lbs", "last_attended": "Illinois-Urbana-Champaign", "country": "Lithuania"}, {"name": "Bronny James", "team": "LAL", "number": "9", "position": "G", "height": "6-2", "weight": "210 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "LeBron James", "team": "LAL", "number": "23", "position": "F", "height": "6-9", "weight": "250 lbs", "last_attended": "St. Vincent-St. Mary HS (OH)", "country": "USA"}, {"name": "Sion James", "team": "CHA", "number": "4", "position": "G", "height": "6-5", "weight": "220 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Jaime Jaquez Jr.", "team": "MIA", "number": "11", "position": "G", "height": "6-6", "weight": "225 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "DeJon Jarreau", "team": "FA", "number": "", "position": "G", "height": "6-5", "weight": "185 lbs", "last_attended": "Houston", "country": "USA"}, {"name": "DaQuan Jeffries", "team": "FA", "number": "", "position": "G-F", "height": "6-5", "weight": "222 lbs", "last_attended": "Tulsa", "country": "USA"}, {"name": "Trey Jemison III", "team": "NYK", "number": "50", "position": "C", "height": "6-10", "weight": "270 lbs", "last_attended": "Alabama-Birmingham", "country": "USA"}, {"name": "Daniss Jenkins", "team": "DET", "number": "24", "position": "G", "height": "6-4", "weight": "165 lbs", "last_attended": "St. John's", "country": "USA"}, {"name": "Ty Jerome", "team": "MEM", "number": "2", "position": "G-F", "height": "6-5", "weight": "195 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "Isaiah Joe", "team": "OKC", "number": "11", "position": "G", "height": "6-4", "weight": "165 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "AJ Johnson", "team": "DAL", "number": "8", "position": "G", "height": "6-5", "weight": "160 lbs", "last_attended": "Illawarra", "country": "USA"}, {"name": "Cameron Johnson", "team": "DEN", "number": "23", "position": "F", "height": "6-8", "weight": "210 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Chaney Johnson", "team": "BKN", "number": "31", "position": "G-F", "height": "6-7", "weight": "220 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Jalen Johnson", "team": "ATL", "number": "1", "position": "F", "height": "6-8", "weight": "219 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Keldon Johnson", "team": "SAS", "number": "3", "position": "F-G", "height": "6-6", "weight": "220 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Keshad Johnson", "team": "MIA", "number": "16", "position": "F", "height": "6-6", "weight": "225 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Tre Johnson", "team": "WAS", "number": "12", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Nikola Jokić", "team": "DEN", "number": "15", "position": "C", "height": "6-11", "weight": "284 lbs", "last_attended": "Mega Basket", "country": "Serbia"}, {"name": "Colby Jones", "team": "FA", "number": "", "position": "G", "height": "6-6", "weight": "207 lbs", "last_attended": "Xavier", "country": "USA"}, {"name": "Curtis Jones", "team": "DEN", "number": "1", "position": "G", "height": "6-3", "weight": "195 lbs", "last_attended": "Iowa State", "country": "USA"}, {"name": "Dillon Jones", "team": "NYK", "number": "33", "position": "F", "height": "6-5", "weight": "235 lbs", "last_attended": "Weber State", "country": "USA"}, {"name": "Herbert Jones", "team": "NOP", "number": "2", "position": "F", "height": "6-7", "weight": "206 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Isaac Jones", "team": "DET", "number": "3", "position": "F", "height": "6-8", "weight": "245 lbs", "last_attended": "Washington State", "country": "USA"}, {"name": "Kam Jones", "team": "IND", "number": "7", "position": "G", "height": "6-4", "weight": "200 lbs", "last_attended": "Marquette", "country": "USA"}, {"name": "Spencer Jones", "team": "DEN", "number": "21", "position": "F", "height": "6-7", "weight": "225 lbs", "last_attended": "Stanford", "country": "USA"}, {"name": "Tre Jones", "team": "CHI", "number": "30", "position": "G", "height": "6-1", "weight": "190 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Tyus Jones", "team": "DEN", "number": "5", "position": "G", "height": "6-0", "weight": "196 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "David Jones Garcia", "team": "SAS", "number": "25", "position": "G", "height": "6-4", "weight": "210 lbs", "last_attended": "Memphis", "country": "Dominican Republic"}, {"name": "Derrick Jones Jr.", "team": "LAC", "number": "5", "position": "F", "height": "6-6", "weight": "210 lbs", "last_attended": "UNLV", "country": "USA"}, {"name": "DeAndre Jordan", "team": "NOP", "number": "9", "position": "C", "height": "6-11", "weight": "265 lbs", "last_attended": "Texas A&M", "country": "USA"}, {"name": "Nikola Jović", "team": "MIA", "number": "5", "position": "F", "height": "6-10", "weight": "205 lbs", "last_attended": "Mega Basket", "country": "Serbia"}, {"name": "Johnny Juzang", "team": "FA", "number": "", "position": "G", "height": "6-7", "weight": "226 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Ryan Kalkbrenner", "team": "CHA", "number": "11", "position": "C", "height": "7-1", "weight": "256 lbs", "last_attended": "Creighton", "country": "USA"}, {"name": "Yuki Kawamura", "team": "CHI", "number": "8", "position": "G", "height": "5-7", "weight": "159 lbs", "last_attended": "Yokohama B-Corsairs (Japan)", "country": "Japan"}, {"name": "Trevor Keels", "team": "MIA", "number": "3", "position": "G", "height": "6-3", "weight": "215 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Miles Kelly", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Luke Kennard", "team": "LAL", "number": "10", "position": "G", "height": "6-5", "weight": "206 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Jayson Kent", "team": "POR", "number": "", "position": "F", "height": "6-8", "weight": "215 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Walker Kessler", "team": "UTA", "number": "24", "position": "C", "height": "7-2", "weight": "245 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Corey Kispert", "team": "ATL", "number": "24", "position": "F", "height": "6-6", "weight": "224 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Maxi Kleber", "team": "LAL", "number": "14", "position": "F", "height": "6-10", "weight": "240 lbs", "last_attended": "Bayern Munich", "country": "Germany"}, {"name": "Bobi Klintman", "team": "FA", "number": "", "position": "F", "height": "6-9", "weight": "225 lbs", "last_attended": "Wake Forest", "country": "Sweden"}, {"name": "Dalton Knecht", "team": "LAL", "number": "4", "position": "F", "height": "6-6", "weight": "215 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Kon Knueppel", "team": "CHA", "number": "7", "position": "G-F", "height": "6-6", "weight": "215 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Tyler Kolek", "team": "NYK", "number": "13", "position": "G", "height": "6-2", "weight": "195 lbs", "last_attended": "Marquette", "country": "USA"}, {"name": "Christian Koloko", "team": "ATL", "number": "10", "position": "C", "height": "6-11", "weight": "225 lbs", "last_attended": "Arizona", "country": "Cameroon"}, {"name": "John Konchar", "team": "UTA", "number": "55", "position": "G", "height": "6-5", "weight": "210 lbs", "last_attended": "Indiana-Purdue Fort Wayne", "country": "USA"}, {"name": "Luke Kornet", "team": "SAS", "number": "7", "position": "C-F", "height": "7-1", "weight": "250 lbs", "last_attended": "Vanderbilt", "country": "USA"}, {"name": "Vít Krejčí", "team": "POR", "number": "27", "position": "G", "height": "6-8", "weight": "195 lbs", "last_attended": "Zaragoza", "country": "Czech Republic"}, {"name": "Jonathan Kuminga", "team": "ATL", "number": "0", "position": "F", "height": "6-7", "weight": "225 lbs", "last_attended": "NBA G League Ignite", "country": "DRC"}, {"name": "Kyle Kuzma", "team": "MIL", "number": "18", "position": "F", "height": "6-8", "weight": "221 lbs", "last_attended": "Utah", "country": "USA"}, {"name": "Skal Labissiere", "team": "FA", "number": "", "position": "F-C", "height": "6-10", "weight": "235 lbs", "last_attended": "Kentucky", "country": "Haiti"}, {"name": "Jock Landale", "team": "ATL", "number": "31", "position": "C", "height": "6-11", "weight": "255 lbs", "last_attended": "St. Mary's", "country": "Australia"}, {"name": "Chaz Lanier", "team": "DET", "number": "20", "position": "G", "height": "6-3", "weight": "206 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Jake LaRavia", "team": "LAL", "number": "12", "position": "F", "height": "6-7", "weight": "235 lbs", "last_attended": "Wake Forest", "country": "USA"}, {"name": "Pelle Larsson", "team": "MIA", "number": "9", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Arizona", "country": "Sweden"}, {"name": "Zach LaVine", "team": "SAC", "number": "8", "position": "G", "height": "6-5", "weight": "200 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "A.J. Lawson", "team": "TOR", "number": "0", "position": "G", "height": "6-6", "weight": "179 lbs", "last_attended": "South Carolina", "country": "Canada"}, {"name": "Kawhi Leonard", "team": "LAC", "number": "2", "position": "F", "height": "6-6", "weight": "225 lbs", "last_attended": "San Diego State", "country": "USA"}, {"name": "Malevy Leons", "team": "GSW", "number": "33", "position": "F", "height": "6-9", "weight": "210 lbs", "last_attended": "Bradley", "country": "Netherlands"}, {"name": "Caris LeVert", "team": "DET", "number": "8", "position": "G", "height": "6-7", "weight": "205 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "E.J. Liddell", "team": "BKN", "number": "9", "position": "F", "height": "6-6", "weight": "240 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Damian Lillard", "team": "POR", "number": "0", "position": "G", "height": "6-2", "weight": "200 lbs", "last_attended": "Weber State", "country": "USA"}, {"name": "Dereck Lively II", "team": "DAL", "number": "2", "position": "C", "height": "7-1", "weight": "230 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Isaiah Livers", "team": "PHX", "number": "18", "position": "F", "height": "6-6", "weight": "232 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "Chris Livingston", "team": "FA", "number": "", "position": "F", "height": "6-6", "weight": "220 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Kevon Looney", "team": "NOP", "number": "55", "position": "F", "height": "6-9", "weight": "222 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Brook Lopez", "team": "LAC", "number": "11", "position": "C", "height": "7-1", "weight": "282 lbs", "last_attended": "Stanford", "country": "USA"}, {"name": "Caleb Love", "team": "POR", "number": "2", "position": "G", "height": "6-3", "weight": "212 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Kevin Love", "team": "UTA", "number": "42", "position": "F-C", "height": "6-10", "weight": "251 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Lawson Lovering", "team": "FA", "number": "", "position": "C", "height": "7-0", "weight": "", "last_attended": "Utah", "country": "USA"}, {"name": "Kyle Lowry", "team": "PHI", "number": "7", "position": "G", "height": "6-0", "weight": "196 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Khaman Maluach", "team": "PHX", "number": "10", "position": "C", "height": "7-1", "weight": "250 lbs", "last_attended": "Duke", "country": "South Sudan"}, {"name": "Sandro Mamukelashvili", "team": "TOR", "number": "54", "position": "F-C", "height": "6-9", "weight": "240 lbs", "last_attended": "Seton Hall", "country": "Georgia"}, {"name": "Terance Mann", "team": "BKN", "number": "14", "position": "G-F", "height": "6-6", "weight": "215 lbs", "last_attended": "Florida State", "country": "USA"}, {"name": "Tre Mann", "team": "CHA", "number": "23", "position": "G", "height": "6-4", "weight": "178 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Chris Mañon", "team": "LAL", "number": "30", "position": "G", "height": "6-4", "weight": "209 lbs", "last_attended": "Vanderbilt", "country": "USA"}, {"name": "Lauri Markkanen", "team": "UTA", "number": "23", "position": "F-C", "height": "7-1", "weight": "240 lbs", "last_attended": "Arizona", "country": "Finland"}, {"name": "Naji Marshall", "team": "DAL", "number": "13", "position": "F", "height": "6-6", "weight": "220 lbs", "last_attended": "Xavier", "country": "USA"}, {"name": "Alijah Martin", "team": "TOR", "number": "55", "position": "G", "height": "6-2", "weight": "210 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Caleb Martin", "team": "DAL", "number": "16", "position": "F", "height": "6-5", "weight": "205 lbs", "last_attended": "Nevada", "country": "USA"}, {"name": "Cody Martin", "team": "FA", "number": "", "position": "F", "height": "6-6", "weight": "205 lbs", "last_attended": "Nevada", "country": "USA"}, {"name": "Tyrese Martin", "team": "PHI", "number": "23", "position": "F", "height": "6-6", "weight": "215 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Jahmai Mashack", "team": "MEM", "number": "", "position": "G", "height": "6-4", "weight": "203 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Garrison Mathews", "team": "FA", "number": "", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Lipscomb", "country": "USA"}, {"name": "Bennedict Mathurin", "team": "LAC", "number": "9", "position": "G-F", "height": "6-5", "weight": "210 lbs", "last_attended": "Arizona", "country": "Canada"}, {"name": "Karlo Matković", "team": "NOP", "number": "17", "position": "F-C", "height": "6-10", "weight": "231 lbs", "last_attended": "Mega Basket", "country": "Bosnia and Herzegovina"}, {"name": "Tyrese Maxey", "team": "PHI", "number": "0", "position": "G", "height": "6-2", "weight": "200 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Bez Mbeng", "team": "UTA", "number": "21", "position": "G", "height": "6-4", "weight": "185 lbs", "last_attended": "Yale", "country": "USA"}, {"name": "Miles McBride", "team": "NYK", "number": "2", "position": "G", "height": "6-2", "weight": "195 lbs", "last_attended": "West Virginia", "country": "USA"}, {"name": "Jared McCain", "team": "OKC", "number": "3", "position": "G", "height": "6-3", "weight": "195 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Mac McClung", "team": "CHI", "number": "5", "position": "G", "height": "6-2", "weight": "185 lbs", "last_attended": "Texas Tech", "country": "USA"}, {"name": "CJ McCollum", "team": "ATL", "number": "3", "position": "G", "height": "6-3", "weight": "190 lbs", "last_attended": "Lehigh", "country": "USA"}, {"name": "T.J. McConnell", "team": "IND", "number": "9", "position": "G", "height": "6-1", "weight": "190 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Kevin McCullar Jr.", "team": "NYK", "number": "9", "position": "G", "height": "6-6", "weight": "210 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "Jaden McDaniels", "team": "MIN", "number": "3", "position": "F", "height": "6-9", "weight": "185 lbs", "last_attended": "Washington", "country": "USA"}, {"name": "Doug McDermott", "team": "SAC", "number": "7", "position": "F", "height": "6-7", "weight": "225 lbs", "last_attended": "Creighton", "country": "USA"}, {"name": "Bryce McGowens", "team": "NOP", "number": "11", "position": "G", "height": "6-6", "weight": "190 lbs", "last_attended": "Nebraska", "country": "USA"}, {"name": "Jordan McLaughlin", "team": "SAS", "number": "0", "position": "G", "height": "5-11", "weight": "185 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Liam McNeeley", "team": "CHA", "number": "33", "position": "F", "height": "6-7", "weight": "210 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "De'Anthony Melton", "team": "GSW", "number": "8", "position": "G", "height": "6-2", "weight": "200 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Sam Merrill", "team": "CLE", "number": "5", "position": "G", "height": "6-4", "weight": "205 lbs", "last_attended": "Utah State", "country": "USA"}, {"name": "Khris Middleton", "team": "DAL", "number": "20", "position": "F", "height": "6-7", "weight": "222 lbs", "last_attended": "Texas A&M", "country": "USA"}, {"name": "Brandon Miller", "team": "CHA", "number": "24", "position": "F", "height": "6-7", "weight": "200 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Emanuel Miller", "team": "SAS", "number": "14", "position": "F", "height": "6-5", "weight": "215 lbs", "last_attended": "TCU", "country": "Canada"}, {"name": "Jordan Miller", "team": "LAC", "number": "22", "position": "G", "height": "6-5", "weight": "194 lbs", "last_attended": "Miami", "country": "USA"}, {"name": "Leonard Miller", "team": "CHI", "number": "11", "position": "F", "height": "6-10", "weight": "220 lbs", "last_attended": "NBA G League Ignite", "country": "Canada"}, {"name": "Riley Minix", "team": "CLE", "number": "12", "position": "F", "height": "6-7", "weight": "230 lbs", "last_attended": "Morehead State", "country": "USA"}, {"name": "Josh Minott", "team": "BKN", "number": "00", "position": "F", "height": "6-8", "weight": "205 lbs", "last_attended": "Memphis", "country": "USA"}, {"name": "Yves Missi", "team": "NOP", "number": "21", "position": "C", "height": "6-11", "weight": "235 lbs", "last_attended": "Baylor", "country": "Cameroon"}, {"name": "Ajay Mitchell", "team": "OKC", "number": "25", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "California-Santa Barbara", "country": "Belgium"}, {"name": "Davion Mitchell", "team": "MIA", "number": "45", "position": "G", "height": "6-0", "weight": "202 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "Donovan Mitchell", "team": "CLE", "number": "45", "position": "G", "height": "6-2", "weight": "215 lbs", "last_attended": "Louisville", "country": "USA"}, {"name": "Evan Mobley", "team": "CLE", "number": "4", "position": "C", "height": "6-11", "weight": "215 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Jonathan Mogbo", "team": "TOR", "number": "2", "position": "F", "height": "6-9", "weight": "225 lbs", "last_attended": "San Francisco", "country": "USA"}, {"name": "Malik Monk", "team": "SAC", "number": "0", "position": "G", "height": "6-3", "weight": "200 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Moses Moody", "team": "GSW", "number": "4", "position": "G", "height": "6-5", "weight": "211 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Wendell Moore Jr.", "team": "DET", "number": "14", "position": "G", "height": "6-5", "weight": "215 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Alex Morales", "team": "ORL", "number": "", "position": "G", "height": "6-6", "weight": "210 lbs", "last_attended": "Wagner", "country": "USA"}, {"name": "Ja Morant", "team": "MEM", "number": "12", "position": "G", "height": "6-2", "weight": "174 lbs", "last_attended": "Murray State", "country": "USA"}, {"name": "Monte Morris", "team": "FA", "number": "", "position": "G", "height": "6-2", "weight": "183 lbs", "last_attended": "Iowa State", "country": "USA"}, {"name": "Trey Murphy III", "team": "NOP", "number": "25", "position": "F", "height": "6-8", "weight": "206 lbs", "last_attended": "Virginia", "country": "USA"}, {"name": "Dejounte Murray", "team": "NOP", "number": "5", "position": "G", "height": "6-4", "weight": "180 lbs", "last_attended": "Washington", "country": "USA"}, {"name": "Jamal Murray", "team": "DEN", "number": "27", "position": "G", "height": "6-4", "weight": "215 lbs", "last_attended": "Kentucky", "country": "Canada"}, {"name": "Keegan Murray", "team": "SAC", "number": "13", "position": "F", "height": "6-8", "weight": "225 lbs", "last_attended": "Iowa", "country": "USA"}, {"name": "Kris Murray", "team": "POR", "number": "24", "position": "F", "height": "6-8", "weight": "218 lbs", "last_attended": "Iowa", "country": "USA"}, {"name": "Collin Murray-Boyles", "team": "TOR", "number": "12", "position": "F", "height": "6-7", "weight": "245 lbs", "last_attended": "South Carolina", "country": "USA"}, {"name": "Svi Mykhailiuk", "team": "UTA", "number": "10", "position": "G-F", "height": "6-7", "weight": "205 lbs", "last_attended": "Kansas", "country": "Ukraine"}, {"name": "Pete Nance", "team": "MIL", "number": "35", "position": "F", "height": "6-9", "weight": "225 lbs", "last_attended": "Northwestern", "country": "USA"}, {"name": "Larry Nance Jr.", "team": "CLE", "number": "22", "position": "F-C", "height": "6-6", "weight": "245 lbs", "last_attended": "Wyoming", "country": "USA"}, {"name": "Grant Nelson", "team": "FA", "number": "", "position": "F", "height": "7-0", "weight": "215 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Andrew Nembhard", "team": "IND", "number": "2", "position": "G-F", "height": "6-4", "weight": "191 lbs", "last_attended": "Gonzaga", "country": "Canada"}, {"name": "Ryan Nembhard", "team": "DAL", "number": "9", "position": "G", "height": "5-11", "weight": "180 lbs", "last_attended": "Gonzaga", "country": "Canada"}, {"name": "Aaron Nesmith", "team": "IND", "number": "23", "position": "G-F", "height": "6-5", "weight": "215 lbs", "last_attended": "Vanderbilt", "country": "USA"}, {"name": "Asa Newell", "team": "ATL", "number": "14", "position": "F", "height": "6-10", "weight": "220 lbs", "last_attended": "Georgia", "country": "USA"}, {"name": "Tristen Newton", "team": "HOU", "number": "13", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Yanic Konan Niederhäuser", "team": "LAC", "number": "14", "position": "C", "height": "6-11", "weight": "242 lbs", "last_attended": "Penn State", "country": "Switzerland"}, {"name": "Zeke Nnaji", "team": "DEN", "number": "22", "position": "F-C", "height": "6-10", "weight": "240 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Jusuf Nurkić", "team": "UTA", "number": "30", "position": "C", "height": "6-11", "weight": "290 lbs", "last_attended": "Cedevita", "country": "Bosnia and Herzegovina"}, {"name": "Josh Oduro", "team": "NOP", "number": "", "position": "C", "height": "6-9", "weight": "240 lbs", "last_attended": "Providence", "country": "USA"}, {"name": "Toby Okani", "team": "FA", "number": "", "position": "F", "height": "6-8", "weight": "210 lbs", "last_attended": "West Virginia", "country": "USA"}, {"name": "Josh Okogie", "team": "HOU", "number": "20", "position": "G", "height": "6-4", "weight": "213 lbs", "last_attended": "Georgia Tech", "country": "Nigeria"}, {"name": "Onyeka Okongwu", "team": "ATL", "number": "17", "position": "F-C", "height": "6-10", "weight": "240 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Isaac Okoro", "team": "CHI", "number": "35", "position": "F-G", "height": "6-4", "weight": "225 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Lachlan Olbrich", "team": "CHI", "number": "47", "position": "C", "height": "6-8", "weight": "236 lbs", "last_attended": "Illawarra", "country": "Australia"}, {"name": "Kelly Olynyk", "team": "SAS", "number": "8", "position": "F-C", "height": "7-0", "weight": "240 lbs", "last_attended": "Gonzaga", "country": "Canada"}, {"name": "Norchad Omier", "team": "LAC", "number": "", "position": "F", "height": "6-7", "weight": "248 lbs", "last_attended": "Miami", "country": "Nicaragua"}, {"name": "Royce O'Neale", "team": "PHX", "number": "00", "position": "F", "height": "6-6", "weight": "226 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "Kelly Oubre Jr.", "team": "PHI", "number": "9", "position": "F-G", "height": "6-8", "weight": "210 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "Chris Paul", "team": "FA", "number": "", "position": "G", "height": "6-0", "weight": "175 lbs", "last_attended": "Wake Forest", "country": "USA"}, {"name": "Cameron Payne", "team": "FA", "number": "", "position": "G", "height": "6-2", "weight": "183 lbs", "last_attended": "Murray State", "country": "USA"}, {"name": "Gary Payton II", "team": "GSW", "number": "0", "position": "G", "height": "6-2", "weight": "195 lbs", "last_attended": "Oregon State", "country": "USA"}, {"name": "Micah Peavy", "team": "NOP", "number": "14", "position": "G-F", "height": "6-7", "weight": "215 lbs", "last_attended": "Georgetown", "country": "USA"}, {"name": "Sean Pedulla", "team": "LAC", "number": "", "position": "G", "height": "6-1", "weight": "195 lbs", "last_attended": "Mississippi", "country": "USA"}, {"name": "Noah Penda", "team": "ORL", "number": "93", "position": "G-F", "height": "6-7", "weight": "215 lbs", "last_attended": "-", "country": "France"}, {"name": "Taelon Peter", "team": "IND", "number": "4", "position": "G", "height": "6-3", "weight": "185 lbs", "last_attended": "Liberty", "country": "USA"}, {"name": "Drew Peterson", "team": "FA", "number": "", "position": "F", "height": "6-8", "weight": "205 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Julian Phillips", "team": "MIN", "number": "4", "position": "F", "height": "6-6", "weight": "201 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Jalen Pickett", "team": "DEN", "number": "24", "position": "G", "height": "6-2", "weight": "202 lbs", "last_attended": "Penn State", "country": "USA"}, {"name": "Scotty Pippen Jr.", "team": "MEM", "number": "1", "position": "G", "height": "6-2", "weight": "170 lbs", "last_attended": "Vanderbilt", "country": "USA"}, {"name": "Daeqwon Plowden", "team": "SAC", "number": "29", "position": "G-F", "height": "6-4", "weight": "216 lbs", "last_attended": "Bowling Green", "country": "USA"}, {"name": "Mason Plumlee", "team": "SAS", "number": "45", "position": "F-C", "height": "7-0", "weight": "254 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Brandin Podziemski", "team": "GSW", "number": "2", "position": "G", "height": "6-4", "weight": "205 lbs", "last_attended": "Santa Clara", "country": "USA"}, {"name": "Jakob Poeltl", "team": "TOR", "number": "19", "position": "C", "height": "7-0", "weight": "253 lbs", "last_attended": "Utah", "country": "Austria"}, {"name": "Jordan Poole", "team": "NOP", "number": "3", "position": "G", "height": "6-4", "weight": "194 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "Craig Porter Jr.", "team": "CLE", "number": "9", "position": "G", "height": "6-1", "weight": "180 lbs", "last_attended": "Wichita State", "country": "USA"}, {"name": "Kevin Porter Jr.", "team": "MIL", "number": "7", "position": "G-F", "height": "6-5", "weight": "203 lbs", "last_attended": "Southern California", "country": "USA"}, {"name": "Michael Porter Jr.", "team": "BKN", "number": "17", "position": "F", "height": "6-10", "weight": "218 lbs", "last_attended": "Missouri", "country": "USA"}, {"name": "Bobby Portis", "team": "MIL", "number": "9", "position": "F", "height": "6-9", "weight": "250 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Kristaps Porziņģis", "team": "GSW", "number": "7", "position": "F-C", "height": "7-2", "weight": "240 lbs", "last_attended": "Cajasol Sevilla", "country": "Latvia"}, {"name": "Quinten Post", "team": "GSW", "number": "21", "position": "C", "height": "7-0", "weight": "238 lbs", "last_attended": "Boston College", "country": "Netherlands"}, {"name": "Micah Potter", "team": "IND", "number": "11", "position": "C", "height": "6-9", "weight": "248 lbs", "last_attended": "Wisconsin", "country": "USA"}, {"name": "John Poulakidas", "team": "DAL", "number": "", "position": "G", "height": "6-6", "weight": "205 lbs", "last_attended": "Yale", "country": "USA"}, {"name": "Drake Powell", "team": "BKN", "number": "4", "position": "G-F", "height": "6-5", "weight": "195 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Dwight Powell", "team": "DAL", "number": "7", "position": "F-C", "height": "6-10", "weight": "240 lbs", "last_attended": "Stanford", "country": "Canada"}, {"name": "Norman Powell", "team": "MIA", "number": "24", "position": "G", "height": "6-3", "weight": "215 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Taurean Prince", "team": "MIL", "number": "12", "position": "F", "height": "6-6", "weight": "218 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "Payton Pritchard", "team": "BOS", "number": "11", "position": "G", "height": "6-1", "weight": "195 lbs", "last_attended": "Oregon", "country": "USA"}, {"name": "Tyrese Proctor", "team": "CLE", "number": "24", "position": "G", "height": "6-4", "weight": "185 lbs", "last_attended": "Duke", "country": "Australia"}, {"name": "Olivier-Maxence Prosper", "team": "MEM", "number": "18", "position": "F", "height": "6-7", "weight": "230 lbs", "last_attended": "Marquette", "country": "Canada"}, {"name": "Zyon Pullin", "team": "MIN", "number": "15", "position": "G", "height": "6-4", "weight": "206 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Derik Queen", "team": "NOP", "number": "22", "position": "C", "height": "6-9", "weight": "250 lbs", "last_attended": "Maryland", "country": "USA"}, {"name": "Neemias Queta", "team": "BOS", "number": "88", "position": "C", "height": "7-0", "weight": "248 lbs", "last_attended": "Utah State", "country": "Portugal"}, {"name": "Immanuel Quickley", "team": "TOR", "number": "5", "position": "G", "height": "6-2", "weight": "190 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Julius Randle", "team": "MIN", "number": "30", "position": "F-C", "height": "6-9", "weight": "250 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Maxime Raynaud", "team": "SAC", "number": "42", "position": "C", "height": "7-1", "weight": "250 lbs", "last_attended": "Stanford", "country": "France"}, {"name": "Duop Reath", "team": "FA", "number": "", "position": "C", "height": "6-9", "weight": "245 lbs", "last_attended": "Louisiana State", "country": "South Sudan"}, {"name": "Austin Reaves", "team": "LAL", "number": "15", "position": "G", "height": "6-5", "weight": "197 lbs", "last_attended": "Oklahoma", "country": "USA"}, {"name": "Paul Reed", "team": "DET", "number": "7", "position": "F", "height": "6-9", "weight": "210 lbs", "last_attended": "DePaul", "country": "USA"}, {"name": "Julian Reese", "team": "WAS", "number": "", "position": "F", "height": "6-9", "weight": "230 lbs", "last_attended": "Maryland", "country": "USA"}, {"name": "Antonio Reeves", "team": "CHA", "number": "12", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Naz Reid", "team": "MIN", "number": "11", "position": "C-F", "height": "6-9", "weight": "264 lbs", "last_attended": "Louisiana State", "country": "USA"}, {"name": "Will Richard", "team": "GSW", "number": "3", "position": "G", "height": "6-3", "weight": "206 lbs", "last_attended": "Florida", "country": "USA"}, {"name": "Nick Richards", "team": "CHI", "number": "13", "position": "C", "height": "6-11", "weight": "245 lbs", "last_attended": "Kentucky", "country": "Jamaica"}, {"name": "Jase Richardson", "team": "ORL", "number": "11", "position": "G", "height": "6-1", "weight": "180 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Kadary Richmond", "team": "FA", "number": "", "position": "G", "height": "6-6", "weight": "205 lbs", "last_attended": "St. John's", "country": "USA"}, {"name": "Will Riley", "team": "WAS", "number": "27", "position": "F", "height": "6-9", "weight": "180 lbs", "last_attended": "Illinois-Urbana-Champaign", "country": "USA"}, {"name": "Zaccharie Risacher", "team": "ATL", "number": "10", "position": "F", "height": "6-8", "weight": "200 lbs", "last_attended": "JL Bourg-en-Bresse", "country": "France"}, {"name": "Duncan Robinson", "team": "DET", "number": "55", "position": "F", "height": "6-7", "weight": "215 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "Mitchell Robinson", "team": "NYK", "number": "23", "position": "C-F", "height": "7-0", "weight": "240 lbs", "last_attended": "Western Kentucky", "country": "USA"}, {"name": "Orlando Robinson", "team": "FA", "number": "", "position": "C", "height": "6-10", "weight": "235 lbs", "last_attended": "Fresno State", "country": "USA"}, {"name": "Jeremiah Robinson-Earl", "team": "FA", "number": "", "position": "F", "height": "6-9", "weight": "240 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "David Roddy", "team": "DEN", "number": "45", "position": "F", "height": "6-5", "weight": "255 lbs", "last_attended": "Colorado State", "country": "USA"}, {"name": "Ryan Rollins", "team": "MIL", "number": "13", "position": "G", "height": "6-3", "weight": "180 lbs", "last_attended": "Toledo", "country": "USA"}, {"name": "Rayan Rupert", "team": "MEM", "number": "21", "position": "G-F", "height": "6-7", "weight": "205 lbs", "last_attended": "New Zealand Breakers", "country": "France"}, {"name": "D'Angelo Russell", "team": "WAS", "number": "5", "position": "G", "height": "6-3", "weight": "193 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Cormac Ryan", "team": "MIL", "number": "30", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Domantas Sabonis", "team": "SAC", "number": "11", "position": "F-C", "height": "6-10", "weight": "240 lbs", "last_attended": "Gonzaga", "country": "Lithuania"}, {"name": "Tidjane Salaün", "team": "CHA", "number": "31", "position": "F", "height": "6-10", "weight": "207 lbs", "last_attended": "Cholet", "country": "France"}, {"name": "Hunter Sallis", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "185 lbs", "last_attended": "Wake Forest", "country": "USA"}, {"name": "Kobe Sanders", "team": "LAC", "number": "4", "position": "G", "height": "6-8", "weight": "207 lbs", "last_attended": "Nevada", "country": "USA"}, {"name": "Payton Sandfort", "team": "OKC", "number": "14", "position": "F", "height": "6-7", "weight": "215 lbs", "last_attended": "Iowa", "country": "USA"}, {"name": "Gui Santos", "team": "GSW", "number": "15", "position": "F", "height": "6-7", "weight": "185 lbs", "last_attended": "Minas", "country": "Brazil"}, {"name": "Ben Saraf", "team": "BKN", "number": "77", "position": "G", "height": "6-6", "weight": "200 lbs", "last_attended": "Ratiopharm Ulm", "country": "Israel"}, {"name": "Dario Saric", "team": "FA", "number": "", "position": "F-C", "height": "6-10", "weight": "225 lbs", "last_attended": "Anadolu Efes", "country": "Croatia"}, {"name": "Alex Sarr", "team": "WAS", "number": "20", "position": "C", "height": "7-0", "weight": "205 lbs", "last_attended": "Washington Wizards", "country": "France"}, {"name": "Olivier Sarr", "team": "CLE", "number": "33", "position": "C", "height": "6-10", "weight": "240 lbs", "last_attended": "Kentucky", "country": "France"}, {"name": "Marcus Sasser", "team": "DET", "number": "25", "position": "G", "height": "6-1", "weight": "195 lbs", "last_attended": "Houston", "country": "USA"}, {"name": "Baylor Scheierman", "team": "BOS", "number": "55", "position": "G", "height": "6-6", "weight": "205 lbs", "last_attended": "Creighton", "country": "USA"}, {"name": "Dennis Schröder", "team": "CLE", "number": "8", "position": "G", "height": "6-1", "weight": "175 lbs", "last_attended": "Braunschweig", "country": "Germany"}, {"name": "Trevon Scott", "team": "FA", "number": "", "position": "F", "height": "6-8", "weight": "225 lbs", "last_attended": "Cincinnati", "country": "USA"}, {"name": "Mark Sears", "team": "FA", "number": "", "position": "G", "height": "6-0", "weight": "185 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Alperen Sengun", "team": "HOU", "number": "28", "position": "C", "height": "6-11", "weight": "243 lbs", "last_attended": "Besiktas", "country": "Turkey"}, {"name": "Brice Sensabaugh", "team": "UTA", "number": "28", "position": "F", "height": "6-6", "weight": "235 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Collin Sexton", "team": "CHI", "number": "2", "position": "G", "height": "6-3", "weight": "190 lbs", "last_attended": "Alabama", "country": "USA"}, {"name": "Landry Shamet", "team": "NYK", "number": "44", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Wichita State", "country": "USA"}, {"name": "Terrence Shannon Jr.", "team": "MIN", "number": "1", "position": "G-F", "height": "6-6", "weight": "215 lbs", "last_attended": "Illinois", "country": "USA"}, {"name": "Day'Ron Sharpe", "team": "BKN", "number": "20", "position": "C", "height": "6-10", "weight": "265 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Shaedon Sharpe", "team": "POR", "number": "17", "position": "G", "height": "6-5", "weight": "210 lbs", "last_attended": "Kentucky", "country": "Canada"}, {"name": "Jamal Shead", "team": "TOR", "number": "23", "position": "G", "height": "6-1", "weight": "200 lbs", "last_attended": "Houston", "country": "USA"}, {"name": "Ben Sheppard", "team": "IND", "number": "26", "position": "G", "height": "6-6", "weight": "190 lbs", "last_attended": "Belmont", "country": "USA"}, {"name": "Reed Sheppard", "team": "HOU", "number": "15", "position": "G", "height": "6-2", "weight": "185 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Max Shulga", "team": "BOS", "number": "44", "position": "G", "height": "6-4", "weight": "210 lbs", "last_attended": "Virginia Commonwealth", "country": "Ukraine"}, {"name": "Pascal Siakam", "team": "IND", "number": "43", "position": "F", "height": "6-8", "weight": "245 lbs", "last_attended": "New Mexico State", "country": "Cameroon"}, {"name": "Anfernee Simons", "team": "CHI", "number": "22", "position": "G", "height": "6-3", "weight": "200 lbs", "last_attended": "Edgewater HS (FL)", "country": "USA"}, {"name": "KJ Simpson", "team": "DEN", "number": "25", "position": "G", "height": "6-2", "weight": "189 lbs", "last_attended": "Colorado", "country": "USA"}, {"name": "Jericho Sims", "team": "MIL", "number": "00", "position": "C", "height": "6-10", "weight": "250 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Jalen Slawson", "team": "IND", "number": "18", "position": "F", "height": "6-7", "weight": "215 lbs", "last_attended": "Furman", "country": "USA"}, {"name": "Javon Small", "team": "MEM", "number": "10", "position": "G", "height": "6-1", "weight": "190 lbs", "last_attended": "West Virginia", "country": "USA"}, {"name": "Marcus Smart", "team": "LAL", "number": "36", "position": "G", "height": "6-3", "weight": "220 lbs", "last_attended": "Oklahoma State", "country": "USA"}, {"name": "Dru Smith", "team": "MIA", "number": "12", "position": "G", "height": "6-2", "weight": "203 lbs", "last_attended": "Missouri", "country": "USA"}, {"name": "Jalen Smith", "team": "CHI", "number": "25", "position": "F-C", "height": "6-8", "weight": "244 lbs", "last_attended": "Maryland", "country": "USA"}, {"name": "Malachi Smith", "team": "BKN", "number": "18", "position": "G", "height": "6-4", "weight": "205 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Tolu Smith", "team": "DET", "number": "35", "position": "F", "height": "6-11", "weight": "", "last_attended": "Mississippi State", "country": "USA"}, {"name": "Tyler Smith", "team": "DAL", "number": "21", "position": "F", "height": "6-9", "weight": "224 lbs", "last_attended": "NBA G League Ignite", "country": "USA"}, {"name": "Jabari Smith Jr.", "team": "HOU", "number": "10", "position": "F", "height": "6-11", "weight": "220 lbs", "last_attended": "Auburn", "country": "USA"}, {"name": "Nick Smith Jr.", "team": "LAL", "number": "20", "position": "G", "height": "6-2", "weight": "185 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Jeremy Sochan", "team": "NYK", "number": "20", "position": "F", "height": "6-8", "weight": "230 lbs", "last_attended": "Baylor", "country": "Poland"}, {"name": "Thomas Sorber", "team": "OKC", "number": "12", "position": "C", "height": "6-9", "weight": "250 lbs", "last_attended": "Georgetown", "country": "USA"}, {"name": "Cam Spencer", "team": "MEM", "number": "24", "position": "G", "height": "6-3", "weight": "205 lbs", "last_attended": "Connecticut", "country": "USA"}, {"name": "Pat Spencer", "team": "GSW", "number": "61", "position": "G", "height": "6-2", "weight": "205 lbs", "last_attended": "Northwestern", "country": "USA"}, {"name": "Isaiah Stevens", "team": "SAC", "number": "24", "position": "G", "height": "5-11", "weight": "185 lbs", "last_attended": "Colorado State", "country": "USA"}, {"name": "Isaiah Stewart", "team": "DET", "number": "28", "position": "F-C", "height": "6-8", "weight": "250 lbs", "last_attended": "Washington", "country": "USA"}, {"name": "Julian Strawther", "team": "DEN", "number": "3", "position": "G", "height": "6-6", "weight": "205 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Max Strus", "team": "CLE", "number": "2", "position": "G-F", "height": "6-5", "weight": "215 lbs", "last_attended": "DePaul", "country": "USA"}, {"name": "Jalen Suggs", "team": "ORL", "number": "4", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Jae'Sean Tate", "team": "HOU", "number": "8", "position": "F", "height": "6-4", "weight": "230 lbs", "last_attended": "Ohio State", "country": "USA"}, {"name": "Jayson Tatum", "team": "BOS", "number": "0", "position": "F-G", "height": "6-8", "weight": "210 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Jahmyl Telfort", "team": "FA", "number": "", "position": "G", "height": "6-7", "weight": "", "last_attended": "-", "country": "Canada"}, {"name": "Garrett Temple", "team": "TOR", "number": "17", "position": "G-F", "height": "6-5", "weight": "195 lbs", "last_attended": "Louisiana State", "country": "USA"}, {"name": "Dalen Terry", "team": "PHI", "number": "14", "position": "F", "height": "6-6", "weight": "210 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Adou Thiero", "team": "LAL", "number": "1", "position": "G", "height": "6-7", "weight": "220 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Cam Thomas", "team": "FA", "number": "", "position": "G", "height": "6-3", "weight": "210 lbs", "last_attended": "Louisiana State", "country": "Japan"}, {"name": "Amen Thompson", "team": "HOU", "number": "1", "position": "G-F", "height": "6-7", "weight": "200 lbs", "last_attended": "Overtime Elite", "country": "USA"}, {"name": "Ausar Thompson", "team": "DET", "number": "9", "position": "G-F", "height": "6-7", "weight": "205 lbs", "last_attended": "Overtime Elite", "country": "USA"}, {"name": "Ethan Thompson", "team": "IND", "number": "55", "position": "G", "height": "6-4", "weight": "195 lbs", "last_attended": "Oregon State", "country": "Puerto Rico"}, {"name": "Klay Thompson", "team": "DAL", "number": "31", "position": "G", "height": "6-5", "weight": "220 lbs", "last_attended": "Washington State", "country": "USA"}, {"name": "Matisse Thybulle", "team": "POR", "number": "4", "position": "G-F", "height": "6-5", "weight": "202 lbs", "last_attended": "Washington", "country": "USA"}, {"name": "Xavier Tillman", "team": "CHA", "number": "26", "position": "F", "height": "6-8", "weight": "245 lbs", "last_attended": "Michigan State", "country": "USA"}, {"name": "Drew Timme", "team": "LAL", "number": "17", "position": "F", "height": "6-9", "weight": "235 lbs", "last_attended": "Gonzaga", "country": "USA"}, {"name": "Nae'Qwan Tomlin", "team": "CLE", "number": "35", "position": "F", "height": "6-8", "weight": "210 lbs", "last_attended": "Memphis", "country": "USA"}, {"name": "John Tonje", "team": "BOS", "number": "8", "position": "G", "height": "6-4", "weight": "218 lbs", "last_attended": "Wisconsin", "country": "USA"}, {"name": "Nikola Topić", "team": "OKC", "number": "44", "position": "G", "height": "6-6", "weight": "200 lbs", "last_attended": "Crvena zvezda", "country": "Serbia"}, {"name": "Jacob Toppin", "team": "FA", "number": "", "position": "F", "height": "6-9", "weight": "200 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Obi Toppin", "team": "IND", "number": "1", "position": "F", "height": "6-9", "weight": "220 lbs", "last_attended": "Dayton", "country": "USA"}, {"name": "Karl-Anthony Towns", "team": "NYK", "number": "32", "position": "C-F", "height": "7-0", "weight": "248 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Nolan Traore", "team": "BKN", "number": "88", "position": "G", "height": "6-3", "weight": "185 lbs", "last_attended": "Saint-Quentin", "country": "France"}, {"name": "Luke Travers", "team": "FA", "number": "", "position": "F", "height": "6-6", "weight": "207 lbs", "last_attended": "Rockingham Flames (Aus.)", "country": "Australia"}, {"name": "Gary Trent Jr.", "team": "MIL", "number": "5", "position": "G", "height": "6-5", "weight": "204 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Oscar Tshiebwe", "team": "UTA", "number": "34", "position": "F-C", "height": "6-8", "weight": "255 lbs", "last_attended": "Kentucky", "country": "DRC"}, {"name": "Myles Turner", "team": "MIL", "number": "3", "position": "C-F", "height": "6-11", "weight": "250 lbs", "last_attended": "Texas", "country": "USA"}, {"name": "Hunter Tyson", "team": "FA", "number": "", "position": "F", "height": "6-8", "weight": "215 lbs", "last_attended": "Clemson", "country": "USA"}, {"name": "Jaylon Tyson", "team": "CLE", "number": "20", "position": "G-F", "height": "6-6", "weight": "215 lbs", "last_attended": "California", "country": "USA"}, {"name": "Stanley Umude", "team": "FA", "number": "", "position": "G", "height": "6-6", "weight": "210 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Jonas Valančiūnas", "team": "DEN", "number": "17", "position": "C", "height": "6-11", "weight": "265 lbs", "last_attended": "Lietuvos rytas Vilnius", "country": "Lithuania"}, {"name": "Jarred Vanderbilt", "team": "LAL", "number": "2", "position": "F", "height": "6-8", "weight": "214 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Fred VanVleet", "team": "HOU", "number": "5", "position": "G", "height": "6-0", "weight": "197 lbs", "last_attended": "Wichita State", "country": "USA"}, {"name": "Devin Vassell", "team": "SAS", "number": "24", "position": "G-F", "height": "6-5", "weight": "200 lbs", "last_attended": "Florida State", "country": "USA"}, {"name": "Gabe Vincent", "team": "ATL", "number": "4", "position": "G", "height": "6-2", "weight": "200 lbs", "last_attended": "California-Santa Barbara", "country": "USA"}, {"name": "Nikola Vučević", "team": "BOS", "number": "4", "position": "C", "height": "6-9", "weight": "265 lbs", "last_attended": "Southern California", "country": "Montenegro"}, {"name": "Tristan Vukcevic", "team": "WAS", "number": "00", "position": "F", "height": "7-0", "weight": "220 lbs", "last_attended": "Real Madrid", "country": "Italy"}, {"name": "Dean Wade", "team": "CLE", "number": "32", "position": "F-C", "height": "6-9", "weight": "228 lbs", "last_attended": "Kansas State", "country": "USA"}, {"name": "Franz Wagner", "team": "ORL", "number": "22", "position": "F", "height": "6-10", "weight": "220 lbs", "last_attended": "Michigan", "country": "Germany"}, {"name": "Moritz Wagner", "team": "ORL", "number": "21", "position": "F-C", "height": "6-11", "weight": "245 lbs", "last_attended": "Michigan", "country": "Germany"}, {"name": "Jabari Walker", "team": "PHI", "number": "33", "position": "F", "height": "6-7", "weight": "237 lbs", "last_attended": "Colorado", "country": "USA"}, {"name": "Jarace Walker", "team": "IND", "number": "5", "position": "F", "height": "6-7", "weight": "235 lbs", "last_attended": "Houston", "country": "USA"}, {"name": "Cason Wallace", "team": "OKC", "number": "22", "position": "G", "height": "6-3", "weight": "195 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Keaton Wallace", "team": "ATL", "number": "2", "position": "G", "height": "6-3", "weight": "185 lbs", "last_attended": "Texas-San Antonio", "country": "USA"}, {"name": "Jordan Walsh", "team": "BOS", "number": "27", "position": "G", "height": "6-6", "weight": "205 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Ja'Kobe Walter", "team": "TOR", "number": "14", "position": "G", "height": "6-4", "weight": "180 lbs", "last_attended": "Baylor", "country": "USA"}, {"name": "Kel'el Ware", "team": "MIA", "number": "7", "position": "C", "height": "7-0", "weight": "230 lbs", "last_attended": "Indiana", "country": "USA"}, {"name": "P.J. Washington", "team": "DAL", "number": "25", "position": "F", "height": "6-7", "weight": "230 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "TyTy Washington Jr.", "team": "LAC", "number": "14", "position": "G", "height": "6-3", "weight": "195 lbs", "last_attended": "Kentucky", "country": "USA"}, {"name": "Lindy Waters III", "team": "SAS", "number": "43", "position": "F", "height": "6-5", "weight": "210 lbs", "last_attended": "Oklahoma State", "country": "USA"}, {"name": "Trendon Watford", "team": "PHI", "number": "12", "position": "G-F", "height": "6-8", "weight": "245 lbs", "last_attended": "Louisiana State", "country": "USA"}, {"name": "Jamir Watkins", "team": "WAS", "number": "5", "position": "F", "height": "6-6", "weight": "210 lbs", "last_attended": "Florida State", "country": "USA"}, {"name": "Peyton Watson", "team": "DEN", "number": "8", "position": "G", "height": "6-8", "weight": "200 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Jaylen Wells", "team": "MEM", "number": "0", "position": "F", "height": "6-7", "weight": "", "last_attended": "Washington State", "country": "USA"}, {"name": "Victor Wembanyama", "team": "SAS", "number": "1", "position": "F-C", "height": "7-4", "weight": "235 lbs", "last_attended": "Metropolitans 92", "country": "France"}, {"name": "Blake Wesley", "team": "POR", "number": "1", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "Notre Dame", "country": "USA"}, {"name": "Russell Westbrook", "team": "SAC", "number": "18", "position": "G", "height": "6-4", "weight": "200 lbs", "last_attended": "UCLA", "country": "USA"}, {"name": "Coby White", "team": "CHA", "number": "3", "position": "G", "height": "6-4", "weight": "210 lbs", "last_attended": "North Carolina", "country": "USA"}, {"name": "Derrick White", "team": "BOS", "number": "9", "position": "G", "height": "6-4", "weight": "190 lbs", "last_attended": "Colorado", "country": "USA"}, {"name": "Dariq Whitehead", "team": "FA", "number": "", "position": "G-F", "height": "6-6", "weight": "220 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Cam Whitmore", "team": "WAS", "number": "1", "position": "F", "height": "6-6", "weight": "230 lbs", "last_attended": "Villanova", "country": "USA"}, {"name": "Aaron Wiggins", "team": "OKC", "number": "21", "position": "G", "height": "6-5", "weight": "190 lbs", "last_attended": "Maryland", "country": "USA"}, {"name": "Andrew Wiggins", "team": "MIA", "number": "22", "position": "F", "height": "6-6", "weight": "197 lbs", "last_attended": "Kansas", "country": "Canada"}, {"name": "Alondes Williams", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "210 lbs", "last_attended": "Wake Forest", "country": "USA"}, {"name": "Amari Williams", "team": "BOS", "number": "77", "position": "F-C", "height": "6-11", "weight": "250 lbs", "last_attended": "Kentucky", "country": "United Kingdom"}, {"name": "Brandon Williams", "team": "DAL", "number": "10", "position": "G", "height": "6-1", "weight": "190 lbs", "last_attended": "Arizona", "country": "USA"}, {"name": "Cody Williams", "team": "UTA", "number": "5", "position": "F", "height": "6-8", "weight": "190 lbs", "last_attended": "Colorado", "country": "USA"}, {"name": "Grant Williams", "team": "CHA", "number": "2", "position": "F", "height": "6-7", "weight": "236 lbs", "last_attended": "Tennessee", "country": "USA"}, {"name": "Jalen Williams", "team": "OKC", "number": "8", "position": "G-F", "height": "6-5", "weight": "211 lbs", "last_attended": "Santa Clara", "country": "USA"}, {"name": "Jaylin Williams", "team": "OKC", "number": "6", "position": "F", "height": "6-9", "weight": "240 lbs", "last_attended": "Arkansas", "country": "USA"}, {"name": "Kenrich Williams", "team": "OKC", "number": "34", "position": "G-F", "height": "6-7", "weight": "210 lbs", "last_attended": "TCU", "country": "USA"}, {"name": "Mark Williams", "team": "PHX", "number": "15", "position": "C", "height": "7-1", "weight": "240 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Nate Williams", "team": "GSW", "number": "19", "position": "G", "height": "6-5", "weight": "205 lbs", "last_attended": "Buffalo", "country": "USA"}, {"name": "Patrick Williams", "team": "CHI", "number": "44", "position": "F", "height": "6-6", "weight": "235 lbs", "last_attended": "Florida State", "country": "USA"}, {"name": "Ziaire Williams", "team": "BKN", "number": "1", "position": "F", "height": "6-9", "weight": "185 lbs", "last_attended": "Stanford", "country": "USA"}, {"name": "Robert Williams III", "team": "POR", "number": "35", "position": "C-F", "height": "6-9", "weight": "249 lbs", "last_attended": "Texas A&M", "country": "USA"}, {"name": "Vince Williams Jr.", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "205 lbs", "last_attended": "Va Commonwealth", "country": "USA"}, {"name": "Lucas Williamson", "team": "FA", "number": "", "position": "G", "height": "6-4", "weight": "205 lbs", "last_attended": "Loyola-Chicago", "country": "USA"}, {"name": "Zion Williamson", "team": "NOP", "number": "1", "position": "F", "height": "6-6", "weight": "284 lbs", "last_attended": "Duke", "country": "USA"}, {"name": "Jalen Wilson", "team": "BKN", "number": "22", "position": "F", "height": "6-6", "weight": "220 lbs", "last_attended": "Kansas", "country": "USA"}, {"name": "James Wiseman", "team": "FA", "number": "", "position": "C", "height": "6-11", "weight": "240 lbs", "last_attended": "Memphis", "country": "USA"}, {"name": "Danny Wolf", "team": "BKN", "number": "2", "position": "F", "height": "6-11", "weight": "250 lbs", "last_attended": "Michigan", "country": "USA"}, {"name": "Guerschon Yabusele", "team": "CHI", "number": "28", "position": "F", "height": "6-7", "weight": "265 lbs", "last_attended": "Rouen, France", "country": "France"}, {"name": "Yang Hansen", "team": "POR", "number": "16", "position": "C", "height": "7-1", "weight": "270 lbs", "last_attended": "-", "country": "China"}, {"name": "Jahmir Young", "team": "MIA", "number": "17", "position": "G", "height": "6-0", "weight": "185 lbs", "last_attended": "Maryland", "country": "USA"}, {"name": "Trae Young", "team": "WAS", "number": "3", "position": "G", "height": "6-2", "weight": "164 lbs", "last_attended": "Oklahoma", "country": "USA"}, {"name": "Chris Youngblood", "team": "POR", "number": "3", "position": "G", "height": "6-4", "weight": "", "last_attended": "Alabama", "country": "USA"}, {"name": "Omer Yurtseven", "team": "FA", "number": "", "position": "C", "height": "6-11", "weight": "275 lbs", "last_attended": "Georgetown", "country": "Turkey"}, {"name": "Rocco Zikarsky", "team": "MIN", "number": "44", "position": "C", "height": "7-3", "weight": "227 lbs", "last_attended": "-", "country": "Australia"}, {"name": "Ivica Zubac", "team": "IND", "number": "40", "position": "C", "height": "7-0", "weight": "240 lbs", "last_attended": "Mega Basket", "country": "Croatia"}]
+  </script>
 
-    const roleNames = {
-      owner: "Franchise Owner",
-      coach: "Coach",
-      starter: "Starter",
-      bench: "Bench"
+  <script>
+    const players = JSON.parse(document.getElementById('player-data').textContent);
+    const ratingsKey = 'rpl_star_ratings_v1';
+    const ratings = JSON.parse(localStorage.getItem(ratingsKey) || '{}');
+
+    const teamFilter = document.getElementById('teamFilter');
+    const positionFilter = document.getElementById('positionFilter');
+    const starFilter = document.getElementById('starFilter');
+    const search = document.getElementById('search');
+    const grid = document.getElementById('playerGrid');
+    const emptyState = document.getElementById('emptyState');
+    const totalPlayers = document.getElementById('totalPlayers');
+    const ratedPlayers = document.getElementById('ratedPlayers');
+    const resultCount = document.getElementById('resultCount');
+    const clearBtn = document.getElementById('clearBtn');
+    const exportBtn = document.getElementById('exportBtn');
+
+    const starNeed = {
+      5: '4-4',
+      4: '3-5',
+      3: '2-4',
+      2: '1-3',
+      1: '0-2'
     };
 
-    const grid = document.getElementById("playerGrid");
-    const emptyState = document.getElementById("emptyState");
-    const search = document.getElementById("search");
-    const roleFilter = document.getElementById("roleFilter");
-    const starFilter = document.getElementById("starFilter");
-    const eligibilityFilter = document.getElementById("eligibilityFilter");
-    const totalPlayers = document.getElementById("totalPlayers");
-    const eligiblePlayers = document.getElementById("eligiblePlayers");
-    const resultCount = document.getElementById("resultCount");
-    const fileInput = document.getElementById("fileInput");
-    const pasteBtn = document.getElementById("pasteBtn");
-    const pasteArea = document.getElementById("pasteArea");
-    const applyJsonBtn = document.getElementById("applyJsonBtn");
-    const jsonPaste = document.getElementById("jsonPaste");
-    const resetBtn = document.getElementById("resetBtn");
+    function getRating(name) {
+      return Number(ratings[name] || 0);
+    }
 
-    function starsHtml(count) {
-      let html = "";
+    function setRating(name, value) {
+      ratings[name] = Number(value);
+      localStorage.setItem(ratingsKey, JSON.stringify(ratings));
+      render();
+    }
+
+    function clearRatings() {
+      for (const key of Object.keys(ratings)) delete ratings[key];
+      localStorage.setItem(ratingsKey, JSON.stringify(ratings));
+      render();
+    }
+
+    function exportRatings() {
+      const data = JSON.stringify(ratings, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'rpl-star-ratings.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function populateFilters() {
+      const teams = Array.from(new Set(players.map(p => p.team || 'FA'))).sort((a, b) => a.localeCompare(b));
+      const positions = Array.from(new Set(players.map(p => p.position || '—'))).sort((a, b) => a.localeCompare(b));
+
+      teamFilter.innerHTML = '<option value="all">All Teams</option>' +
+        teams.map(t => `<option value="${t}">${t}</option>`).join('');
+
+      positionFilter.innerHTML = '<option value="all">All Positions</option>' +
+        positions.map(p => `<option value="${p}">${p}</option>`).join('');
+    }
+
+    function starButtons(name, rating) {
+      let html = '<div class="star-row" aria-label="Star selector">';
       for (let i = 1; i <= 5; i++) {
-        html += `<span class="star ${i <= count ? "active" : ""}"></span>`;
+        html += `<button class="star-btn ${i <= rating ? 'on' : ''}" data-name="${encodeURIComponent(name)}" data-star="${i}" type="button" aria-label="Set ${name} to ${i} star${i === 1 ? '' : 's'}"></button>`;
       }
+      html += '</div>';
       return html;
     }
 
-    function statusForPlayer(player) {
-      if (player.stars >= player.eligibleFor + 2) return "overqualified";
-      if (player.stars >= player.eligibleFor) return "eligible";
-      if (player.stars === player.eligibleFor - 1) return "borderline";
-      return "below";
-    }
+    function playerCard(player) {
+      const rating = getRating(player.name);
+      const required = starNeed[rating] || '—';
+      const statusClass = rating >= 4 ? 'good' : rating === 3 ? 'warn' : rating === 2 ? 'warn' : rating === 1 ? 'bad' : 'bad';
+      const statusText = rating ? `${rating}★ assigned` : 'Unrated';
 
-    function statusTag(player) {
-      const status = statusForPlayer(player);
-      if (status === "overqualified") return `<span class="tag bad">Too high for role</span>`;
-      if (status === "eligible") return `<span class="tag good">Eligible</span>`;
-      if (status === "borderline") return `<span class="tag warn">Borderline</span>`;
-      return `<span class="tag bad">Below requirement</span>`;
+      return `
+        <article class="player" data-team="${player.team || 'FA'}" data-position="${player.position || '—'}" data-rating="${rating}" data-search="${(player.name + ' ' + (player.team || 'FA') + ' ' + (player.position || '') + ' ' + (player.country || '')).toLowerCase()}">
+          <div class="player-top">
+            <div>
+              <div class="name">${player.name}</div>
+              <div class="team">
+                ${player.team || 'FA'} • ${player.position || '—'}
+                ${player.number ? ' • #' + player.number : ''}<br>
+                ${player.country || ''}
+              </div>
+            </div>
+            <span class="tag ${statusClass}">${statusText}</span>
+          </div>
+
+          <div class="meta">
+            <div class="meta-item"><span>Height</span><strong>${player.height || '—'}</strong></div>
+            <div class="meta-item"><span>Weight</span><strong>${player.weight || '—'}</strong></div>
+            <div class="meta-item"><span>Last Attended</span><strong>${player.last_attended || '—'}</strong></div>
+          </div>
+
+          <div class="rating-area">
+            <div class="rating-pill">
+              <span>Assigned Star</span>
+              <strong>${rating ? rating + '★' : 'Unrated'}</strong>
+            </div>
+            ${starButtons(player.name, rating)}
+            <div class="rating-pill">
+              <span>Requirement</span>
+              <strong>${rating ? starNeed[rating] + ' record' : 'Pick a star first'}</strong>
+            </div>
+          </div>
+        </article>
+      `;
     }
 
     function render() {
       const q = search.value.trim().toLowerCase();
-      const rf = roleFilter.value;
+      const tf = teamFilter.value;
+      const pf = positionFilter.value;
       const sf = starFilter.value;
-      const ef = eligibilityFilter.value;
 
       const filtered = players.filter(player => {
-        const matchesSearch =
-          !q ||
-          player.name.toLowerCase().includes(q) ||
-          (player.team || "").toLowerCase().includes(q);
-
-        const matchesRole = rf === "all" || player.role === rf;
-        const matchesStars = sf === "all" || String(player.stars) === sf;
-        const status = statusForPlayer(player);
-        const matchesEligibility = ef === "all" || status === ef;
-
-        return matchesSearch && matchesRole && matchesStars && matchesEligibility;
+        const rating = getRating(player.name);
+        const hay = (player.name + ' ' + (player.team || 'FA') + ' ' + (player.position || '') + ' ' + (player.country || '')).toLowerCase();
+        const matchesSearch = !q || hay.includes(q);
+        const matchesTeam = tf === 'all' || (player.team || 'FA') === tf;
+        const matchesPosition = pf === 'all' || (player.position || '—') === pf;
+        const matchesStar = sf === 'all' || String(rating) === sf;
+        return matchesSearch && matchesTeam && matchesPosition && matchesStar;
       });
 
-      grid.innerHTML = filtered.map(player => `
-        <article class="player">
-          <div class="player-top">
-            <div>
-              <div class="name">${player.name}</div>
-              <div class="team">${roleNames[player.role] || "Player"} • ${player.team || "NBA"}</div>
-            </div>
-            <div class="star-row" aria-label="${player.stars} star rating">
-              ${starsHtml(player.stars)}
-            </div>
-          </div>
-
-          <div class="meta">
-            <div class="meta-item">
-              <span>Star Rating</span>
-              <strong>${player.stars} / 5</strong>
-            </div>
-            <div class="meta-item">
-              <span>Role Requirement</span>
-              <strong>${player.eligibleFor}+ Stars</strong>
-            </div>
-            <div class="meta-item">
-              <span>Status</span>
-              <strong>${statusForPlayer(player).replace(/^\w/, c => c.toUpperCase())}</strong>
-            </div>
-          </div>
-
-          ${statusTag(player)}
-        </article>
-      `).join("");
-
-      emptyState.style.display = filtered.length ? "none" : "block";
-      resultCount.textContent = `${filtered.length} result${filtered.length === 1 ? "" : "s"}`;
+      grid.innerHTML = filtered.map(playerCard).join('');
+      emptyState.style.display = filtered.length ? 'none' : 'block';
+      resultCount.textContent = `${filtered.length} result${filtered.length === 1 ? '' : 's'}`;
       totalPlayers.textContent = players.length;
-      eligiblePlayers.textContent = players.filter(p => p.stars >= p.eligibleFor).length;
+      ratedPlayers.textContent = players.filter(p => getRating(p.name) > 0).length;
     }
 
-    search.addEventListener("input", render);
-    roleFilter.addEventListener("change", render);
-    starFilter.addEventListener("change", render);
-    eligibilityFilter.addEventListener("change", render);
-
-    pasteBtn.addEventListener("click", () => {
-      pasteArea.style.display = pasteArea.style.display === "none" ? "block" : "none";
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('.star-btn');
+      if (!btn) return;
+      const name = decodeURIComponent(btn.dataset.name);
+      setRating(name, Number(btn.dataset.star));
     });
 
-    applyJsonBtn.addEventListener("click", () => {
-      try {
-        const parsed = JSON.parse(jsonPaste.value);
-        if (!Array.isArray(parsed)) throw new Error("JSON must be an array.");
-        players = parsed;
-        render();
-      } catch (err) {
-        alert("Invalid JSON. Make sure it's a valid array of player objects.");
-      }
-    });
+    search.addEventListener('input', render);
+    teamFilter.addEventListener('change', render);
+    positionFilter.addEventListener('change', render);
+    starFilter.addEventListener('change', render);
+    clearBtn.addEventListener('click', clearRatings);
+    exportBtn.addEventListener('click', exportRatings);
 
-    fileInput.addEventListener("change", async () => {
-      const file = fileInput.files?.[0];
-      if (!file) return;
-
-      try {
-        const text = await file.text();
-        const parsed = JSON.parse(text);
-        if (!Array.isArray(parsed)) throw new Error("JSON must be an array.");
-        players = parsed;
-        render();
-      } catch (err) {
-        alert("Could not load JSON file. Make sure it contains an array of player objects.");
-      }
-    });
-
-    resetBtn.addEventListener("click", () => {
-      search.value = "";
-      roleFilter.value = "all";
-      starFilter.value = "all";
-      eligibilityFilter.value = "all";
-      pasteArea.style.display = "none";
-      jsonPaste.value = "";
-      render();
-    });
-
+    populateFilters();
     render();
   </script>
 </body>
