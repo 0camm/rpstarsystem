@@ -340,17 +340,9 @@
     }
 
     @media (max-width: 1080px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .controls {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .hero { grid-template-columns: 1fr; }
+      .controls { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 640px) {
@@ -369,8 +361,7 @@
         <div class="badge">★ RPL Star System</div>
         <h1>Active NBA Players</h1>
         <p class="subtitle">
-          A clean star-rating site for <strong>every active NBA player</strong>. This version is built to load a full player list, then show
-          who is eligible for each role based on star requirements.
+          Full star-rating website for active NBA players. Search by name, filter by stars, and check role eligibility instantly.
         </p>
       </section>
 
@@ -378,12 +369,12 @@
         <div class="card stat-box">
           <div class="stat-label">Loaded Players</div>
           <div class="stat-value" id="totalPlayers">0</div>
-          <div class="stat-note">Total active NBA players in the dataset.</div>
+          <div class="stat-note">All active players currently loaded into the site.</div>
         </div>
         <div class="card stat-box">
           <div class="stat-label">Eligible Players</div>
           <div class="stat-value" id="eligiblePlayers">0</div>
-          <div class="stat-note">Players currently meeting the selected role requirement.</div>
+          <div class="stat-note">Players who meet the selected requirement.</div>
         </div>
       </aside>
     </div>
@@ -422,13 +413,17 @@
     </div>
 
     <div class="card modal">
-      <strong>Data format:</strong> each player needs a name, team, role, stars, and required stars for that role.
-      You can load a full active NBA list from a JSON file, which is the best way to keep this current.
+      <strong>Star requirements:</strong><br>
+      5 Star = 4–4<br>
+      4 Star = 3–5<br>
+      3 Star = 2–4<br>
+      2 Star = 1–3<br>
+      1 Star = 0–2
     </div>
 
     <div id="pasteArea" class="card modal" style="display:none;">
       <div style="margin-bottom:10px;"><strong>Paste JSON here</strong></div>
-      <textarea id="jsonPaste" class="control" placeholder='[{"name":"Player Name","team":"Team","role":"starter","stars":4,"eligibleFor":3}]'></textarea>
+      <textarea id="jsonPaste" class="control" placeholder='[{"name":"LeBron James","team":"LAL","role":"owner","stars":5,"eligibleFor":4}]'></textarea>
       <div style="height:10px;"></div>
       <button class="btn" id="applyJsonBtn" type="button">Apply JSON</button>
     </div>
@@ -446,23 +441,23 @@
     </section>
 
     <div class="footer">
-      Replace the loaded JSON with your full active NBA player list.
+      Best setup: store every active NBA player in a JSON file and load it here.
     </div>
   </div>
 
   <script>
-    // Sample file only. Replace this with your full active NBA player dataset.
-    // For every active NBA player, load a JSON file or paste your own data.
+    // Replace this with your full active NBA list.
+    // The structure below is what the page expects.
     let players = [
-      { name: "Luka Dončić", team: "Lakers", role: "owner", stars: 5, eligibleFor: 3 },
-      { name: "Shai Gilgeous-Alexander", team: "Thunder", role: "owner", stars: 5, eligibleFor: 3 },
-      { name: "Nikola Jokić", team: "Nuggets", role: "owner", stars: 5, eligibleFor: 3 },
-      { name: "Jayson Tatum", team: "Celtics", role: "coach", stars: 5, eligibleFor: 2 },
-      { name: "Anthony Edwards", team: "Timberwolves", role: "starter", stars: 4, eligibleFor: 2 },
-      { name: "Tyrese Haliburton", team: "Pacers", role: "starter", stars: 4, eligibleFor: 2 },
-      { name: "Paolo Banchero", team: "Magic", role: "starter", stars: 4, eligibleFor: 2 },
-      { name: "Mikal Bridges", team: "Knicks", role: "bench", stars: 3, eligibleFor: 1 },
-      { name: "Jalen Brunson", team: "Knicks", role: "starter", stars: 4, eligibleFor: 2 }
+      { name: "Luka Dončić", team: "LAL", role: "owner", stars: 5, eligibleFor: 4 },
+      { name: "Shai Gilgeous-Alexander", team: "OKC", role: "owner", stars: 5, eligibleFor: 4 },
+      { name: "Nikola Jokić", team: "DEN", role: "owner", stars: 5, eligibleFor: 4 },
+      { name: "Jayson Tatum", team: "BOS", role: "coach", stars: 5, eligibleFor: 4 },
+      { name: "Anthony Edwards", team: "MIN", role: "starter", stars: 4, eligibleFor: 3 },
+      { name: "Tyrese Haliburton", team: "IND", role: "starter", stars: 4, eligibleFor: 3 },
+      { name: "Paolo Banchero", team: "ORL", role: "starter", stars: 4, eligibleFor: 3 },
+      { name: "Jalen Brunson", team: "NYK", role: "starter", stars: 4, eligibleFor: 3 },
+      { name: "Mikal Bridges", team: "NYK", role: "bench", stars: 3, eligibleFor: 2 }
     ];
 
     const roleNames = {
